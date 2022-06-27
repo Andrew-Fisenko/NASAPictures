@@ -2,6 +2,7 @@ package com.example.nasapictures.view
 
 import android.os.Bundle
 import android.view.*
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import coil.load
@@ -32,6 +33,16 @@ class PictureOfTheDayFragment : Fragment() {
             renderData(appState)
         }
         viewModel.sendRequest()
+
+        binding.chipTwoDaysAgo.setOnClickListener {
+            Toast.makeText(requireContext(), "chipTwoDaysAgo", Toast.LENGTH_SHORT).show()
+        }
+        binding.chipYesterday.setOnClickListener {
+            Toast.makeText(requireContext(), "chipYesterday", Toast.LENGTH_SHORT).show()
+        }
+        binding.chipToday.setOnClickListener {
+            Toast.makeText(requireContext(), "chipToday", Toast.LENGTH_SHORT).show()
+        }
     }
 
     private fun renderData(appState: AppState?) {
