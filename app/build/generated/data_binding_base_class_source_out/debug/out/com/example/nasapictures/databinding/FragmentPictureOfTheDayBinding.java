@@ -4,14 +4,13 @@ package com.example.nasapictures.databinding;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.FrameLayout;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.widget.AppCompatImageView;
 import androidx.viewbinding.ViewBinding;
 import androidx.viewbinding.ViewBindings;
 import com.example.nasapictures.R;
+import com.example.nasapictures.utils.MyImageView;
 import java.lang.NullPointerException;
 import java.lang.Override;
 import java.lang.String;
@@ -21,15 +20,11 @@ public final class FragmentPictureOfTheDayBinding implements ViewBinding {
   private final FrameLayout rootView;
 
   @NonNull
-  public final Button button;
+  public final MyImageView imageView;
 
-  @NonNull
-  public final AppCompatImageView imageView;
-
-  private FragmentPictureOfTheDayBinding(@NonNull FrameLayout rootView, @NonNull Button button,
-      @NonNull AppCompatImageView imageView) {
+  private FragmentPictureOfTheDayBinding(@NonNull FrameLayout rootView,
+      @NonNull MyImageView imageView) {
     this.rootView = rootView;
-    this.button = button;
     this.imageView = imageView;
   }
 
@@ -60,19 +55,13 @@ public final class FragmentPictureOfTheDayBinding implements ViewBinding {
     // This is done to optimize the compiled bytecode for size and performance.
     int id;
     missingId: {
-      id = R.id.button;
-      Button button = ViewBindings.findChildViewById(rootView, id);
-      if (button == null) {
-        break missingId;
-      }
-
       id = R.id.imageView;
-      AppCompatImageView imageView = ViewBindings.findChildViewById(rootView, id);
+      MyImageView imageView = ViewBindings.findChildViewById(rootView, id);
       if (imageView == null) {
         break missingId;
       }
 
-      return new FragmentPictureOfTheDayBinding((FrameLayout) rootView, button, imageView);
+      return new FragmentPictureOfTheDayBinding((FrameLayout) rootView, imageView);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

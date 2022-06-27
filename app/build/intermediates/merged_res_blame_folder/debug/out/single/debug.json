@@ -32,10 +32,6 @@
         "source": "C:\\Users\\fisenko.a\\.gradle\\daemon\\7.3.3\\com.example.nasapictures.app-main-30:\\mipmap-mdpi\\ic_launcher.webp"
     },
     {
-        "merged": "com.example.nasapictures.app-merged_res-28:/layout_activity_main.xml.flat",
-        "source": "com.example.nasapictures.app-main-30:/layout/activity_main.xml"
-    },
-    {
         "merged": "C:\\Users\\fisenko.a\\.gradle\\daemon\\7.3.3\\com.example.nasapictures.app-merged_res-28:\\mipmap-xxxhdpi_ic_launcher.webp.flat",
         "source": "C:\\Users\\fisenko.a\\.gradle\\daemon\\7.3.3\\com.example.nasapictures.app-main-30:\\mipmap-xxxhdpi\\ic_launcher.webp"
     },
