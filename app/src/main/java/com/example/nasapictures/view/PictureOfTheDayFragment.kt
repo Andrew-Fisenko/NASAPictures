@@ -1,56 +1,65 @@
 package com.example.nasapictures.view
 
-
 import android.os.Bundle
-
-import android.view.View
-
+import android.view.*
 import androidx.fragment.app.Fragment
-
 import androidx.lifecycle.ViewModelProvider
-
-import com.example.nasapictures.viewmodel.PicturesOfTheDayViewModel
-
+import coil.load
+import com.example.nasapictures.databinding.FragmentPictureOfTheDayBinding
+import com.example.nasapictures.viewmodel.AppState
+import com.example.nasapictures.viewmodel.PictureOfTheDayViewModel
 
 class PictureOfTheDayFragment : Fragment() {
 
-    private var _binding: FragmentPictureBinding? = null
+    private var _binding: FragmentPictureOfTheDayBinding? = null
     private val binding get() = _binding!!
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-
-        }
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+        _binding = FragmentPictureOfTheDayBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
-    override fun onCreateView(){
-        inflater.in
-
-    }
-
-
-
-    private var viewModel: PicturesOfTheDayViewModel by lazy {
-        ViewModelProvider(this).get(PicturesOfTheDayViewModel::class.java)
+    val viewModel: PictureOfTheDayViewModel by lazy {
+        ViewModelProvider(this).get(PictureOfTheDayViewModel::class.java)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel.getLiveData().observe(
-            viewLifecycleOwner
-        ){appState -> rend
-        }{it->
-            when(it){
-                is AppState.Error -> {}
-                AppState.Loading -> {}
-                is AppState.Success -> {
-                    binding.imageView.load(it.pictureOfTheDayResponseData.utl)
-                }}
+        viewModel.getLiveData().observe(viewLifecycleOwner) { appState ->
+            renderData(appState)
+        }
+        viewModel.sendRequest()
+    }
+
+    private fun renderData(appState: AppState?) {
+        when (appState) {
+            is AppState.Error -> {
+
+            }
+            AppState.Loading -> {
+
+            }
+            is AppState.Success -> {
+                binding.imageView.load(appState.PictureOfTheDayResponceData.url) {
+                    //настроить загрузку изображения error placeholder
+                }
             }
         }
     }
 
     companion object {
-        fun newInstance = null
+        fun newInstance() = PictureOfTheDayFragment()
+    }
 
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }
+
+
+
+
