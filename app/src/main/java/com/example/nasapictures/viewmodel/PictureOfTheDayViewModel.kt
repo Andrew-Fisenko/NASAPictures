@@ -1,5 +1,6 @@
 package com.example.nasapictures.viewmodel
 
+
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.nasapictures.BuildConfig
@@ -22,6 +23,12 @@ class PictureOfTheDayViewModel(
     fun sendRequest() {
         liveData.postValue(AppState.Loading)
         repositoryImpl.getPictureOfTheDayApi().getPictureOfTheDay(BuildConfig.NASA_API_KEY)
+            .enqueue(callback)
+    }
+
+    fun sendRequestByDate(date: String) {
+        liveData.postValue(AppState.Loading)
+        repositoryImpl.getPictureOfTheDayApi().getPictureOfTheDayByDate(BuildConfig.NASA_API_KEY, date)
             .enqueue(callback)
     }
 
