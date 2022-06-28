@@ -9,6 +9,7 @@ import com.example.nasapictures.model.RepositoryImpl
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.lang.Thread.sleep
 
 class PictureOfTheDayViewModel(
     private val liveData: MutableLiveData<AppState> = MutableLiveData(),
@@ -22,14 +23,21 @@ class PictureOfTheDayViewModel(
 
     fun sendRequest() {
         liveData.postValue(AppState.Loading)
-        repositoryImpl.getPictureOfTheDayApi().getPictureOfTheDay(BuildConfig.NASA_API_KEY)
-            .enqueue(callback)
+        Thread {
+            sleep(2000)
+            repositoryImpl.getPictureOfTheDayApi().getPictureOfTheDay(BuildConfig.NASA_API_KEY)
+                .enqueue(callback)
+        }.start()
     }
 
     fun sendRequestByDate(date: String) {
         liveData.postValue(AppState.Loading)
-        repositoryImpl.getPictureOfTheDayApi().getPictureOfTheDayByDate(BuildConfig.NASA_API_KEY, date)
-            .enqueue(callback)
+        Thread {
+            sleep(3000)
+            repositoryImpl.getPictureOfTheDayApi()
+                .getPictureOfTheDayByDate(BuildConfig.NASA_API_KEY, date)
+                .enqueue(callback)
+        }.start()
     }
 
     private val callback = object : Callback<PicturesOfTheDayResponseData> {
@@ -45,7 +53,7 @@ class PictureOfTheDayViewModel(
         }
 
         override fun onFailure(call: Call<PicturesOfTheDayResponseData>, t: Throwable) {
-            TODO("Not yet implemented")
+            liveData.postValue(AppState.Error(throw IllegalStateException("что-то пошло не так")))
         }
     }
 }
