@@ -1,5 +1,7 @@
 package com.example.nasapictures.view
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.*
 import android.widget.Toast
@@ -42,6 +44,12 @@ class PictureOfTheDayFragment : Fragment() {
         }
         binding.chipToday.setOnClickListener {
             Toast.makeText(requireContext(), "chipToday", Toast.LENGTH_SHORT).show()
+        }
+
+        binding.inputLayout.setEndIconOnClickListener {
+            startActivity(Intent(Intent.ACTION_VIEW).apply {
+                data = Uri.parse("https://en.wikipedia.org/wiki/${binding.input.text.toString()}")
+            })
         }
     }
 

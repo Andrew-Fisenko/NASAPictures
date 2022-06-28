@@ -18,5 +18,4 @@ class RepositoryImpl : Repository {
     fun getPictureOfTheDayApi(): PictureOfTheDayAPI {
         return retrofit.create(PictureOfTheDayAPI::class.java)
     }
-
 }

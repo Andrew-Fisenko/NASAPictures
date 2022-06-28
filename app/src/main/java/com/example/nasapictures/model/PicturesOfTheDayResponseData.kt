@@ -1,6 +1,5 @@
 package com.example.nasapictures.model
 
-
 import com.google.gson.annotations.SerializedName
 
 data class PicturesOfTheDayResponseData(
