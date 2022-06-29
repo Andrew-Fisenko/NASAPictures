@@ -2,24 +2,19 @@ package com.example.nasapictures.view
 
 import android.content.Intent
 import android.net.Uri
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import coil.load
-import android.os.Bundle
-import android.view.*
-import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModel
-import com.example.nasapictures.BuildConfig
+import com.example.nasapictures.R
 import com.example.nasapictures.databinding.FragmentPictureOfTheDayBinding
 import com.example.nasapictures.viewmodel.AppState
 import com.example.nasapictures.viewmodel.PictureOfTheDayViewModel
 import com.google.android.material.snackbar.Snackbar
-import java.lang.Thread.sleep
-
-
 import java.util.*
 
 class PictureOfTheDayFragment : Fragment() {
@@ -81,51 +76,25 @@ class PictureOfTheDayFragment : Fragment() {
         }
     }
 
-    private fun renderData(appState: AppState){
-        when(appState){
+    private fun renderData(appState: AppState) {
+        when (appState) {
             is AppState.Error -> {
-                binding.loadingLayout.visibility = View.INVISIBLE
+                binding.loadingLayout.visibility = View.GONE
+                binding.imageView.setImageResource(R.drawable.ic_load_error_vector)
                 val throwable = appState.error
                 Snackbar.make(binding.imageView, "Error $throwable", Snackbar.LENGTH_LONG).show()
             }
             is AppState.Loading -> {
-//                binding.loadingLayout.visibility = if (binding.loadingLayout.visibility == View.VISIBLE){
-//                    View.INVISIBLE
-//                } else{
-//                    View.VISIBLE
-//                }
                 binding.loadingLayout.visibility = View.VISIBLE
-                Thread {
-                    sleep(3000)
-                }.start()
+                binding.imageView.setImageResource(R.drawable.ic_no_photo_vector)
             }
             is AppState.Success -> {
-//                binding.loadingLayout.visibility = View.INVISIBLE
+                binding.loadingLayout.visibility = View.GONE
                 binding.imageView.load(appState.pictureOfTheDayResponseData.url)
                 Snackbar.make(binding.imageView, "Success", Snackbar.LENGTH_LONG).show()
             }
         }
     }
-//    private fun renderData(appState: AppState?) {
-//        when (appState) {
-//            is AppState.Error -> {
-//                binding.loadingLayout.visibility = View.GONE
-//                val throwable = appState.error
-//                Snackbar.make(binding.inputLayout, "Error $throwable", Snackbar.LENGTH_LONG).show()
-//            }
-//            AppState.Loading -> {
-//                binding.loadingLayout.visibility = View.VISIBLE
-//
-//            }
-//            is AppState.Success -> {
-//                binding.loadingLayout.visibility = View.INVISIBLE
-//                binding.imageView.load(appState.pictureOfTheDayResponseData.url) {
-//                    //настроить загрузку изображения error placeholder
-//                }
-//            }
-//
-//        }
-//    }
 
     companion object {
         fun newInstance() = PictureOfTheDayFragment()

@@ -19,11 +19,11 @@
 
     <style name="MyChipStyle" parent="Widget.Material3.Chip.Suggestion">
         <item name="chipBackgroundColor">@drawable/my_selector_backgroundchip</item>
-        <item name="rippleColor">@color/purple_700</item>
+        <item name="rippleColor">#2E8B57</item>
     </style>
 
     <style name="MyTextInputLayoutStyle" parent="Widget.Material3.TextInputLayout.OutlinedBox">
-        <item name="helperTextTextColor">#CF00F4</item>
+        <item name="helperTextTextColor">#FF6347</item>
         <item name="counterTextColor">@drawable/my_selector_backgroundchip</item>
     </style>
 

@@ -1,6 +1,5 @@
 package com.example.nasapictures.viewmodel
 
-
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.nasapictures.BuildConfig
@@ -24,7 +23,7 @@ class PictureOfTheDayViewModel(
     fun sendRequest() {
         liveData.postValue(AppState.Loading)
         Thread {
-            sleep(2000)
+            sleep(1000)
             repositoryImpl.getPictureOfTheDayApi().getPictureOfTheDay(BuildConfig.NASA_API_KEY)
                 .enqueue(callback)
         }.start()
@@ -33,7 +32,7 @@ class PictureOfTheDayViewModel(
     fun sendRequestByDate(date: String) {
         liveData.postValue(AppState.Loading)
         Thread {
-            sleep(3000)
+            sleep(1000)
             repositoryImpl.getPictureOfTheDayApi()
                 .getPictureOfTheDayByDate(BuildConfig.NASA_API_KEY, date)
                 .enqueue(callback)
@@ -48,12 +47,12 @@ class PictureOfTheDayViewModel(
             if (response.isSuccessful) {
                 liveData.postValue(AppState.Success(response.body()!!))
             } else {
-                liveData.postValue(AppState.Error(throw IllegalStateException("что-то пошло не так")))
+                liveData.postValue(AppState.Error(IllegalStateException("Error!")))
             }
         }
 
         override fun onFailure(call: Call<PicturesOfTheDayResponseData>, t: Throwable) {
-            liveData.postValue(AppState.Error(throw IllegalStateException("что-то пошло не так")))
+            liveData.postValue(AppState.Error(IllegalStateException("что-то пошло не так")))
         }
     }
 }
