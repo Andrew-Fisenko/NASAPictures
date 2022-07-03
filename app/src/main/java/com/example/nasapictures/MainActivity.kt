@@ -4,7 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.core.view.WindowCompat
 import com.example.nasapictures.databinding.ActivityMainBinding
-import com.example.nasapictures.view.PictureOfTheDayFragment
+import com.example.nasapictures.view.picture.PictureOfTheDayFragment
 
 class MainActivity : AppCompatActivity() {
 

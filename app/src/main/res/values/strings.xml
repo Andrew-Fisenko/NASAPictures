@@ -3,4 +3,7 @@
     <string name="hint">Write text</string>
     <string name="settings">Settings</string>
     <string name="favourite">Favourite</string>
+    <string name="aqua">Aqua</string>
+    <string name="violet">Violet</string>
+    <string name="walkman">Walkman</string>
 </resources>

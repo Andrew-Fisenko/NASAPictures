@@ -3,6 +3,11 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/de5er/AndroidStudioProjects/NASAPictures/app/src/main/res/layout/bottom_navigation_layout.xml" value="0.1375" />
+        <entry key="..\:/Users/de5er/AndroidStudioProjects/NASAPictures/app/src/main/res/layout/fragment_picture_of_the_day.xml" value="0.264" />
+        <entry key="..\:/Users/de5er/AndroidStudioProjects/NASAPictures/app/src/main/res/layout/fragment_settings.xml" value="0.264" />
+        <entry key="..\:/Users/de5er/AndroidStudioProjects/NASAPictures/app/src/main/res/menu/menu_bottom_navigation.xml" value="0.13854166666666667" />
+        <entry key="..\:/Users/de5er/AndroidStudioProjects/NASAPictures/app/src/main/res/menu/menu_main.xml" value="0.253125" />
         <entry key="..\:/Users/fisenko.a/.gradle/caches/transforms-3/43699aa8fd20be8bf6165d23296034cd/transformed/material-1.6.1/res/drawable/material_ic_keyboard_arrow_left_black_24dp.xml" value="0.19" />
         <entry key="..\:/Users/fisenko.a/.gradle/caches/transforms-3/43699aa8fd20be8bf6165d23296034cd/transformed/material-1.6.1/res/drawable/material_ic_keyboard_arrow_right_black_24dp.xml" value="0.19" />
         <entry key="..\:/Users/fisenko.a/AndroidStudioProjects/NASAPictures/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.19" />

@@ -1,4 +1,4 @@
-package com.example.nasapictures.view
+package com.example.nasapictures.view.picture
 
 import android.content.Intent
 import android.net.Uri
@@ -12,6 +12,7 @@ import com.example.nasapictures.MainActivity
 import com.example.nasapictures.R
 import com.example.nasapictures.databinding.FragmentPictureOfTheDayBinding
 import com.example.nasapictures.view.drawer.BottomNavigationDrawerFragment
+import com.example.nasapictures.view.settings.SettingsFragment
 import com.example.nasapictures.viewmodel.AppState
 import com.example.nasapictures.viewmodel.PictureOfTheDayViewModel
 import com.google.android.material.snackbar.Snackbar
@@ -72,8 +73,8 @@ class PictureOfTheDayFragment : Fragment() {
         when (item.itemId) {
             R.id.action_favorite -> {}
             R.id.action_settings -> {
-//                 requireActivity().supportFragmentManager.beginTransaction().hide(this)
-//                    .add(R.id.container, SettingsFragment.newInstance()).addToBackStack("").commit()
+                 requireActivity().supportFragmentManager.beginTransaction().hide(this)
+                    .add(R.id.container, SettingsFragment.newInstance()).addToBackStack("").commit()
             }
             android.R.id.home -> {
                 activity?.let {
