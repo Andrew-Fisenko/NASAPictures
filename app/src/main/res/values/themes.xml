@@ -33,4 +33,8 @@
 
     <style name="Theme.NASAPictures" parent="Base.Theme.NASAPictures" />
 
+    <style name="ThemeViolet" parent="Base.Theme.NASAPictures" />
+    <style name="ThemeAqua" parent="Base.Theme.NASAPictures" />
+    <style name="ThemeWalkman" parent="Base.Theme.NASAPictures" />
+
 </resources>
