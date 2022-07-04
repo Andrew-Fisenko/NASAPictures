@@ -21,6 +21,8 @@ class MainActivity : AppCompatActivity() {
 //        WindowCompat.setDecorFitsSystemWindows(window, false)
         super.onCreate(savedInstanceState)
 
+        setTheme(getRealStyle(getCurrentTheme()))
+
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
@@ -28,6 +30,8 @@ class MainActivity : AppCompatActivity() {
             supportFragmentManager.beginTransaction()
                 .replace(R.id.container, PictureOfTheDayFragment.newInstance()).commit()
         }
+
+
     }
     fun setCurrentTheme(currentTheme: Int) {
         val sharedPreferences = getSharedPreferences(KEY_SP, MODE_PRIVATE)
@@ -39,7 +43,9 @@ class MainActivity : AppCompatActivity() {
     fun getCurrentTheme(): Int {
         val sharedPreferences = getSharedPreferences(KEY_SP, MODE_PRIVATE)
         return sharedPreferences.getInt(KEY_CURRENT_THEME, -1)
-    } private fun getRealStyle(currentTheme: Int): Int {
+    }
+
+    private fun getRealStyle(currentTheme: Int): Int {
         return when (currentTheme) {
             ThemeViolet -> R.style.ThemeViolet
             ThemeAqua -> R.style.ThemeAqua

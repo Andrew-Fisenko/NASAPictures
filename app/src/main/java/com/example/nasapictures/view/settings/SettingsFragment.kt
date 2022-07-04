@@ -1,12 +1,17 @@
 package com.example.nasapictures.view.settings
 
 import android.content.Context
+import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.graphics.BlendModeColorFilterCompat
+import androidx.core.graphics.BlendModeColorFilterCompat.*
+import androidx.core.graphics.BlendModeCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.viewpager2.widget.ViewPager2
 import com.example.nasapictures.MainActivity
 import com.example.nasapictures.ThemeAqua
 import com.example.nasapictures.ThemeViolet
@@ -42,10 +47,23 @@ class SettingsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         setTabLayoutClicks()
     }
 
     private fun setTabLayoutClicks() = with(binding) {
+        when ((parentActivity.getCurrentTheme())) {
+            ThemeViolet -> {
+                settingLayout.selectTab(binding.settingLayout.getTabAt(0))
+            }
+            ThemeAqua -> {
+                settingLayout.selectTab(binding.settingLayout.getTabAt(0))
+            }
+            ThemeWalkman -> {
+                settingLayout.selectTab(binding.settingLayout.getTabAt(0))
+            }
+        }
+
         settingLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
             override fun onTabSelected(tab: TabLayout.Tab?) {
                 when (tab?.position) {
@@ -58,6 +76,7 @@ class SettingsFragment : Fragment() {
                     2 -> {
                         parentActivity.setCurrentTheme(ThemeWalkman)
                     }
+
                 }
                 requireActivity().recreate()
             }
@@ -70,7 +89,6 @@ class SettingsFragment : Fragment() {
             }
         })
     }
-
 
     companion object {
         fun newInstance() = SettingsFragment()
