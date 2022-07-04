@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.gb.m_2090_3.MainActivity">
+    <item
+        android:id="@+id/action_favorite"
+        android:icon="@drawable/ic_favourite_menu"
+        android:title="@string/favourite"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/action_settings"
+        android:icon="@drawable/ic_settings_menu"
+        android:title="@string/settings"
+        app:showAsAction="ifRoom" />
+
+</menu>
