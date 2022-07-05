@@ -57,10 +57,10 @@ class SettingsFragment : Fragment() {
                 settingLayout.selectTab(binding.settingLayout.getTabAt(0))
             }
             ThemeAqua -> {
-                settingLayout.selectTab(binding.settingLayout.getTabAt(0))
+                settingLayout.selectTab(binding.settingLayout.getTabAt(1))
             }
             ThemeWalkman -> {
-                settingLayout.selectTab(binding.settingLayout.getTabAt(0))
+                settingLayout.selectTab(binding.settingLayout.getTabAt(2))
             }
         }
 
