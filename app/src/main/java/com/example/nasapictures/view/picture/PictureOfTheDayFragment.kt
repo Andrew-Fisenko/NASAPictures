@@ -73,7 +73,7 @@ class PictureOfTheDayFragment : Fragment() {
         when (item.itemId) {
             R.id.action_favorite -> {}
             R.id.action_settings -> {
-                 requireActivity().supportFragmentManager.beginTransaction().hide(this)
+                requireActivity().supportFragmentManager.beginTransaction().hide(this)
                     .add(R.id.container, SettingsFragment.newInstance()).addToBackStack("").commit()
             }
             android.R.id.home -> {

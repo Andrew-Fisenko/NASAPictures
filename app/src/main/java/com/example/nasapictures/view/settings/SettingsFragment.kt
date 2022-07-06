@@ -76,11 +76,9 @@ class SettingsFragment : Fragment() {
                     2 -> {
                         parentActivity.setCurrentTheme(ThemeWalkman)
                     }
-
                 }
                 requireActivity().recreate()
             }
-
 
             override fun onTabUnselected(tab: TabLayout.Tab?) {
             }
@@ -98,5 +96,4 @@ class SettingsFragment : Fragment() {
         super.onDestroyView()
         _binding = null
     }
-
 }

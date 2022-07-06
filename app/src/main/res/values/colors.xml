@@ -8,4 +8,5 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="opacity">#80000000</color>
+    <color name="additional_color">?attr/colorSecondary</color>
 </resources>
