@@ -1,17 +1,12 @@
 package com.example.nasapictures.view.settings
 
 import android.content.Context
-import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.graphics.BlendModeColorFilterCompat
-import androidx.core.graphics.BlendModeColorFilterCompat.*
-import androidx.core.graphics.BlendModeCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import androidx.viewpager2.widget.ViewPager2
 import com.example.nasapictures.MainActivity
 import com.example.nasapictures.ThemeAqua
 import com.example.nasapictures.ThemeViolet
@@ -27,7 +22,6 @@ class SettingsFragment : Fragment() {
     override fun onAttach(context: Context) {
         super.onAttach(context)
         parentActivity = (context as MainActivity)
-
     }
 
     private var _binding: FragmentSettingsBinding? = null

@@ -1,8 +1,7 @@
 package com.example.nasapictures
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.core.view.WindowCompat
+import androidx.appcompat.app.AppCompatActivity
 import com.example.nasapictures.databinding.ActivityMainBinding
 import com.example.nasapictures.view.picture.PictureOfTheDayFragment
 
