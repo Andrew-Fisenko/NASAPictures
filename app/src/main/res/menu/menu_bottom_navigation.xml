@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="none"
+        android:id="@+id/dfh"
+        android:menuCategory="container"
+        android:enabled="true"
+        android:visible="true">
+        <item
+            android:id="@+id/navigation_one"
+            android:icon="@drawable/ic_archive"
+            android:title="На экран 1" />
+        <item
+            android:id="@+id/navigation_two"
+            android:icon="@drawable/ic_send"
+            android:title="На экран 2" />
+    </group>
+    <group android:checkableBehavior="none">
+        <item
+            android:id="@+id/navigation_one2"
+            android:icon="@drawable/ic_archive"
+            android:title="На экран 1" />
+        <item
+            android:id="@+id/navigation_two3"
+            android:icon="@drawable/ic_send"
+            android:title="На экран 2" />
+    </group>
+
+</menu>
