@@ -19,22 +19,22 @@ class ViewPagerActivity : AppCompatActivity() {
         binding.viewPager2.adapter = ViewPager2Adapter(this)
 
         bindTabLayout()
-
     }
-        private fun bindTabLayout() {
-            TabLayoutMediator(
-                binding.tabLayout,
-                binding.viewPager2,
-                object : TabLayoutMediator.TabConfigurationStrategy {
-                    override fun onConfigureTab(tab: TabLayout.Tab, position: Int) {
-                        tab.text = when (position) {
-                            0 -> ("Earth")
-                            1 -> ("Mars")
-                            2 -> ("Solar system")
 
-                            else -> ("Error")
-                        }
+    private fun bindTabLayout() {
+        TabLayoutMediator(
+            binding.tabLayout,
+            binding.viewPager2,
+            object : TabLayoutMediator.TabConfigurationStrategy {
+                override fun onConfigureTab(tab: TabLayout.Tab, position: Int) {
+                    tab.text = when (position) {
+                        0 -> ("Earth")
+                        1 -> ("Mars")
+                        2 -> ("Solar system")
+
+                        else -> ("Error")
                     }
-                }).attach()
-        }
+                }
+            }).attach()
     }
+}

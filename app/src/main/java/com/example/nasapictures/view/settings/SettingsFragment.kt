@@ -15,7 +15,6 @@ import com.example.nasapictures.databinding.FragmentSettingsBinding
 import com.example.nasapictures.viewmodel.PictureOfTheDayViewModel
 import com.google.android.material.tabs.TabLayout
 
-
 class SettingsFragment : Fragment() {
 
     private lateinit var parentActivity: MainActivity
