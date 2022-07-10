@@ -16,7 +16,7 @@ class ViewPagerActivity : AppCompatActivity() {
         setTheme(R.style.ThemeViolet)
         binding = ActivityViewPagerBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        binding.viewPager2.adapter = ViewPager2Adapter(this)
+        binding.viewPager.adapter = ViewPager2Adapter(this)
 
         bindTabLayout()
     }
@@ -24,7 +24,7 @@ class ViewPagerActivity : AppCompatActivity() {
     private fun bindTabLayout() {
         TabLayoutMediator(
             binding.tabLayout,
-            binding.viewPager2,
+            binding.viewPager,
             object : TabLayoutMediator.TabConfigurationStrategy {
                 override fun onConfigureTab(tab: TabLayout.Tab, position: Int) {
                     tab.text = when (position) {
