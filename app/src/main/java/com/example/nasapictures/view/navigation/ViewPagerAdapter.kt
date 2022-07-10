@@ -17,12 +17,14 @@ class ViewPagerAdapter(fragmentManager: FragmentManager) :
     }
 
     override fun getPageTitle(position: Int): CharSequence {
-        return when(position){
-            0 ->("Earth")
-            1 ->("Mars")
-            2 ->("Solar system")
+        return when (position) {
+            0 -> ("Earth")
+            1 -> ("Mars")
+            2 -> ("Solar system")
 
-            else -> {"Error"}
+            else -> {
+                "Error"
+            }
         }
     }
 }

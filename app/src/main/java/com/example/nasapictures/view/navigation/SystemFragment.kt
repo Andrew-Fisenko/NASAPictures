@@ -18,6 +18,5 @@ class SystemFragment : Fragment() {
     }
 
     companion object {
-
     }
 }

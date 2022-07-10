@@ -18,6 +18,5 @@ class MarsFragment : Fragment() {
     }
 
     companion object {
-
     }
 }

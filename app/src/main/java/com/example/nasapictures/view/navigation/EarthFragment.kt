@@ -18,6 +18,5 @@ class EarthFragment : Fragment() {
     }
 
     companion object {
-
     }
 }
