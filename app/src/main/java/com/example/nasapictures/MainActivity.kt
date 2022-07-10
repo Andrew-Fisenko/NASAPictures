@@ -48,7 +48,7 @@ class MainActivity : AppCompatActivity() {
             ThemeViolet -> R.style.ThemeViolet
             ThemeAqua -> R.style.ThemeAqua
             ThemeWalkman -> R.style.ThemeWalkman
-            else -> 0
+            else -> R.style.ThemeWalkman
         }
     }
 }
