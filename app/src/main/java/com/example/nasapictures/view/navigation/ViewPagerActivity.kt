@@ -12,6 +12,7 @@ class ViewPagerActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityViewPagerBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        binding.viewPager.adapter = ViewPagerAdapter(supportFragmentManager)
 
     }
 }

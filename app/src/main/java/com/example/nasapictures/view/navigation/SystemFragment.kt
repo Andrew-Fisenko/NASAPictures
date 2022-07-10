@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import com.example.nasapictures.R
 
 
-class SystemFragmentFragment : Fragment() {
+class SystemFragment : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
