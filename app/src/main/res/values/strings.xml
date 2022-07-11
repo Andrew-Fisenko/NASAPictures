@@ -12,4 +12,7 @@
     <string name="mars">Mars</string>
     <string name="weather">Weather</string>
     <string name="system">System</string>
+    <string name="two_days_ago">Tho days ago</string>
+    <string name="yesterday">Yesterday</string>
+    <string name="today">Today</string>
 </resources>

@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.example.nasapictures.R
 import com.example.nasapictures.databinding.FragmentEarthBinding
 import com.example.nasapictures.databinding.FragmentPictureOfTheDayBinding
 import com.example.nasapictures.view.picture.PictureOfTheDayFragment
@@ -38,11 +39,11 @@ class EarthFragment : Fragment() {
             object : TabLayoutMediator.TabConfigurationStrategy {
                 override fun onConfigureTab(tab: TabLayout.Tab, position: Int) {
                     tab.text = when (position) {
-                        0 -> ("Earth")
-                        1 -> ("Mars")
-                        2 -> ("Solar system")
+                        0 -> {resources.getString(R.string.two_days_ago)}
+                        1 -> {resources.getString(R.string.yesterday)}
+                        2 -> {resources.getString(R.string.today)}
 
-                        else -> ("Error")
+                        else -> {resources.getString(R.string.today)}
                     }
                 }
 

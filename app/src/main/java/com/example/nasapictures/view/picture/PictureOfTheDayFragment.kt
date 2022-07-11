@@ -61,7 +61,8 @@ class PictureOfTheDayFragment : Fragment() {
             })
         }
 
-        (requireActivity() as MainActivity).setSupportActionBar(binding.bottomAppBar)
+//        (requireActivity() as MainActivity).setSupportActionBar(binding.bottomAppBar)
+//        setHasOptionsMenu(true)
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
