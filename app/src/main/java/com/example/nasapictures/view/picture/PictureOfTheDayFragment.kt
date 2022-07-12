@@ -8,7 +8,6 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import coil.load
-import com.example.nasapictures.MainActivity
 import com.example.nasapictures.R
 import com.example.nasapictures.databinding.FragmentPictureOfTheDayBinding
 import com.example.nasapictures.view.drawer.BottomNavigationDrawerFragment

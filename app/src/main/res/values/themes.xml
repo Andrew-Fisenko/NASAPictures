@@ -1,20 +1,29 @@
 <resources>
-    <!-- Base application theme. -->
+
     <style name="Base.Theme.NASAPictures" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your light theme here. -->
+
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
-        <!-- Primary brand color. -->
+
         <item name="colorPrimary">@color/purple_500</item>
         <item name="colorPrimaryVariant">@color/purple_700</item>
         <item name="colorOnPrimary">@color/white</item>
-        <!-- Secondary brand color. -->
+
         <item name="colorSecondary">@color/teal_200</item>
         <item name="colorSecondaryVariant">@color/teal_700</item>
         <item name="colorOnSecondary">@color/black</item>
 
         <item name="textInputStyle">@style/MyTextInputLayoutStyle</item>
         <item name="tabTextColor">@color/black</item>
+    </style>
+
+    <style name="MyBottomNavigationView" parent="Widget.Material3.BottomNavigationView">
+        <item name="itemActiveIndicatorStyle">@style/MyActiveIndicatorStyle</item>
+    </style>
+
+    <style name="MyActiveIndicatorStyle" parent="Widget.Material3.BottomNavigationView.ActiveIndicator">
+        <item name="shapeAppearance">@style/ShapeAppearance.Material3.Corner.None</item>
+        <item name="android:color">?colorPrimary</item>
     </style>
 
     <style name="MyChipStyleViolet" parent="Widget.Material3.Chip.Suggestion">

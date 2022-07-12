@@ -27,7 +27,6 @@ class BottomBarActivity : AppCompatActivity() {
                 R.id.action_view_system -> {navigateTo(SystemFragment()); true}
                 else -> true
             }
-
         }
         binding.bottomNavigationView.selectedItemId = R.id.action_view_earth
 

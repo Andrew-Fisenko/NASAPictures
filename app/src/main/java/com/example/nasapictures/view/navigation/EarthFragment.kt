@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.nasapictures.R
 import com.example.nasapictures.databinding.FragmentEarthBinding
-import com.example.nasapictures.databinding.FragmentPictureOfTheDayBinding
 import com.example.nasapictures.view.picture.PictureOfTheDayFragment
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
@@ -28,7 +27,6 @@ class EarthFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.viewPager.adapter = ViewPager2AdapterForEarthFragment(this)
-
         bindTabLayout()
     }
 
@@ -42,12 +40,9 @@ class EarthFragment : Fragment() {
                         0 -> {resources.getString(R.string.two_days_ago)}
                         1 -> {resources.getString(R.string.yesterday)}
                         2 -> {resources.getString(R.string.today)}
-
                         else -> {resources.getString(R.string.today)}
                     }
                 }
-
-
             }).attach()
     }
 
