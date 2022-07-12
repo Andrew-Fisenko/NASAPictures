@@ -52,7 +52,7 @@ class EarthFragment : Fragment() {
     }
 
     companion object {
-        fun newInstance() = PictureOfTheDayFragment()
+        fun newInstance(i: Int) = PictureOfTheDayFragment(i)
     }
 
     override fun onDestroyView() {

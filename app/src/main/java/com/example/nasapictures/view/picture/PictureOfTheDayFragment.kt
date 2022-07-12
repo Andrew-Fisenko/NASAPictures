@@ -18,10 +18,11 @@ import com.example.nasapictures.viewmodel.PictureOfTheDayViewModel
 import com.google.android.material.snackbar.Snackbar
 import java.util.*
 
-class PictureOfTheDayFragment : Fragment() {
+class PictureOfTheDayFragment(i: Int) : Fragment() {
 
     private var _binding: FragmentPictureOfTheDayBinding? = null
     private val binding get() = _binding!!
+    private var date = i
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -41,7 +42,7 @@ class PictureOfTheDayFragment : Fragment() {
         viewModel.getLiveData().observe(viewLifecycleOwner) { appState ->
             renderData(appState)
         }
-        viewModel.sendRequest()
+        viewModel.sendRequestByDate(newDate(date))
 
         binding.chipTwoDaysAgo.setOnClickListener {
             viewModel.sendRequestByDate(newDate(2))
@@ -124,7 +125,7 @@ class PictureOfTheDayFragment : Fragment() {
     }
 
     companion object {
-        fun newInstance() = PictureOfTheDayFragment()
+        fun newInstance(i: Int) = PictureOfTheDayFragment(i)
     }
 
     override fun onDestroyView() {

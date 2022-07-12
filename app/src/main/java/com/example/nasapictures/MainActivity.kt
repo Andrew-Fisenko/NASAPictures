@@ -25,8 +25,9 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         if (savedInstanceState == null) {
+            val i = 0
             supportFragmentManager.beginTransaction()
-                .replace(R.id.container, PictureOfTheDayFragment.newInstance()).commit()
+                .replace(R.id.container, PictureOfTheDayFragment.newInstance(i)).commit()
         }
     }
 
