@@ -66,6 +66,27 @@
             android:layout_gravity="center"
             app:layout_constraintTop_toBottomOf="@+id/inputLayout" />
 
+        <com.example.nasapictures.utils.MyImageView
+            android:id="@+id/imageViewSmall"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_gravity="center_horizontal"
+            app:layout_constraintTop_toBottomOf="@+id/inputLayout"
+            />
+
+        <TextView
+                android:id="@+id/videoOfTheDay"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:textSize="22sp"
+                android:visibility="invisible"
+                app:layout_constraintTop_toBottomOf="@+id/imageViewSmall"
+                />
+
+
+
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <FrameLayout
