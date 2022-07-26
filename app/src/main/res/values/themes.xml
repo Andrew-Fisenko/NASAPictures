@@ -67,19 +67,19 @@
     <style name="ThemeViolet" parent="Base.Theme.NASAPictures">
         <item name="colorPrimary">#9370DB</item>
         <item name="colorSecondary">#DDA0DD</item>
-        <item name="fontFamily">@font/splash_regular</item>
-        <item name="android:fontFamily">@font/splash_regular</item>
+        <item name="fontFamily">@font/finlandica_variable_font_wght</item>
+        <item name="android:fontFamily">@font/finlandica_variable_font_wght</item>
         <item name="chipStyle">@style/MyChipStyleViolet</item>
-        <item name="backgroundColor">#9932CC</item>
+        <item name="backgroundColor">@color/white</item>
     </style>
 
     <style name="ThemeAqua" parent="Base.Theme.NASAPictures">
         <item name="colorPrimary">#00FFFF</item>
         <item name="colorSecondary">#7FFFD4</item>
-        <item name="fontFamily">@font/aclonica</item>
-        <item name="android:fontFamily">@font/aclonica</item>
+        <item name="fontFamily">@font/finlandica_variable_font_wght</item>
+        <item name="android:fontFamily">@font/finlandica_variable_font_wght</item>
         <item name="chipStyle">@style/MyChipStyleAqua</item>
-        <item name="backgroundColor">#5F9EA0</item>
+        <item name="backgroundColor">@color/white</item>
     </style>
 
     <style name="ThemeWalkman" parent="Base.Theme.NASAPictures">

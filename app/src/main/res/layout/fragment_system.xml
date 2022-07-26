@@ -4,14 +4,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appBar"
         android:layout_width="match_parent"
         android:layout_height="300dp"
         android:background="@color/purple_200"
         android:fitsSystemWindows="true">
-
 
         <com.google.android.material.appbar.CollapsingToolbarLayout
             android:id="@+id/toolbarLayout"
@@ -34,13 +32,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="?actionBarSize"
                 app:layout_collapseMode="pin" />
-
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/fab"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="X"
-                app:layout_behavior=".view.layouts.behaviors.FabBehavior" />
 
         </com.google.android.material.appbar.CollapsingToolbarLayout>
 
@@ -93,5 +84,12 @@
             android:layout_marginRight="7dp"
             android:src="@drawable/swipe_indicator_active" />
     </LinearLayout>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TEST"
+        app:layout_behavior=".view.layouts.behaviors.FabBehavior" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
