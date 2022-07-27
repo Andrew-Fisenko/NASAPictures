@@ -117,8 +117,15 @@ class PictureOfTheDayFragment(i: Int) : Fragment() {
             }
             is AppState.Success -> {
                 binding.loadingLayout.visibility = View.GONE
-                binding.imageView.load(appState.pictureOfTheDayResponseData.url)
-                Snackbar.make(binding.imageView, "Success", Snackbar.LENGTH_LONG).show()
+                if (appState.pictureOfTheDayResponseData.mediaType == "video") {
+                    showAVideoUrl(appState.pictureOfTheDayResponseData.url)
+                } else {
+                    binding.imageView.load(appState.pictureOfTheDayResponseData.url)
+                    Snackbar.make(binding.imageView, "Success", Snackbar.LENGTH_LONG).show()
+
+                }
+
+
             }
         }
     }
@@ -126,6 +133,22 @@ class PictureOfTheDayFragment(i: Int) : Fragment() {
     companion object {
         fun newInstance(i: Int) = PictureOfTheDayFragment(i)
     }
+
+    private fun showAVideoUrl(videoUrl: String) = with(binding) {
+        with(binding){
+            imageView.visibility = View.GONE
+            videoOfTheDay.visibility = View.VISIBLE
+            imageViewSmall.visibility = View.VISIBLE
+            binding.imageViewSmall.setImageResource(R.drawable.ic_no_photo_vector)
+            videoOfTheDay.text = "Сегодня у нас нет картинки дня, но есть видео дня! " +
+                    "${videoUrl.toString()} \n кликни >ЗДЕСЬ< чтобы открыть в новом окне"
+            videoOfTheDay.setOnClickListener {
+                val i = Intent(Intent.ACTION_VIEW).apply {
+                    data = Uri.parse(videoUrl)
+                }
+                startActivity(i)
+            }
+        } }
 
     override fun onDestroyView() {
         super.onDestroyView()
