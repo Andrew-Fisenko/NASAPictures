@@ -1,6 +1,8 @@
 package com.example.nasapictures.view.navigation
 
+import android.animation.ObjectAnimator
 import android.os.Bundle
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.example.nasapictures.R
@@ -35,6 +37,7 @@ class BottomBarActivity : AppCompatActivity() {
         badge.maxCharacterCount = 5
         badge.badgeGravity = BadgeDrawable.BOTTOM_START
         //binding.bottomNavigationView.removeBadge(R.id.action_view_system)
+
     }
 
     fun navigateTo (fragment: Fragment){
