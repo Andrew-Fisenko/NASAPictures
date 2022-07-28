@@ -5,7 +5,6 @@ import android.util.AttributeSet
 import android.view.View
 import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.core.widget.NestedScrollView
-import com.example.nasapictures.R
 import com.google.android.material.appbar.AppBarLayout
 
 class NestedBehavior(context: Context, attrs: AttributeSet? = null) :

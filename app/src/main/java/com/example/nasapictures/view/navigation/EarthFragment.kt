@@ -39,10 +39,18 @@ class EarthFragment : Fragment() {
             object : TabLayoutMediator.TabConfigurationStrategy {
                 override fun onConfigureTab(tab: TabLayout.Tab, position: Int) {
                     tab.text = when (position) {
-                        0 -> {resources.getString(R.string.two_days_ago)}
-                        1 -> {resources.getString(R.string.yesterday)}
-                        2 -> {resources.getString(R.string.today)}
-                        else -> {resources.getString(R.string.today)}
+                        0 -> {
+                            resources.getString(R.string.two_days_ago)
+                        }
+                        1 -> {
+                            resources.getString(R.string.yesterday)
+                        }
+                        2 -> {
+                            resources.getString(R.string.today)
+                        }
+                        else -> {
+                            resources.getString(R.string.today)
+                        }
                     }
                 }
             }).attach()

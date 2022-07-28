@@ -36,34 +36,33 @@ class MarsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         val constraintSet = ConstraintSet()
-        //constraintSetStart.clone(binding.constraintContainer)
-        constraintSet.clone(context,R.layout.fragment_mars)
+        constraintSet.clone(context, R.layout.fragment_mars)
 
-
-        binding.nestedScrollViewMars.setOnScrollChangeListener{v, scrollX, scrollY, oldScrollX, oldScrollY ->
+        binding.nestedScrollViewMars.setOnScrollChangeListener { v, scrollX, scrollY, oldScrollX, oldScrollY ->
             binding.appBar.isSelected = binding.nestedScrollViewMars.canScrollVertically(-1)
         }
-    binding.marsImage.setOnClickListener {
-        isFlag2 = !isFlag2
-        val changeBounds = ChangeBounds()
-        changeBounds.duration = 2000L
-        changeBounds.interpolator = AnticipateOvershootInterpolator(2.0f)
-        TransitionManager.beginDelayedTransition(binding.titleContainer,changeBounds)
-        if(isFlag2){
-            constraintSet.connect(
-                R.id.marsTitle,
-                ConstraintSet.RIGHT, R.id.titleContainer,
-                ConstraintSet.RIGHT)
-            //constraintSet.clear(R.id.title,ConstraintSet.RIGHT)
-        }else{
-            constraintSet.connect(R.id.marsTitle,
-                ConstraintSet.RIGHT, R.id.titleContainer,
-                ConstraintSet.LEFT)
+
+        binding.marsImage.setOnClickListener {
+            isFlag2 = !isFlag2
+            val changeBounds = ChangeBounds()
+            changeBounds.duration = 2000L
+            changeBounds.interpolator = AnticipateOvershootInterpolator(2.0f)
+            TransitionManager.beginDelayedTransition(binding.titleContainer, changeBounds)
+            if (isFlag2) {
+                constraintSet.connect(
+                    R.id.marsTitle,
+                    ConstraintSet.RIGHT, R.id.titleContainer,
+                    ConstraintSet.RIGHT
+                )
+            } else {
+                constraintSet.connect(
+                    R.id.marsTitle,
+                    ConstraintSet.RIGHT, R.id.titleContainer,
+                    ConstraintSet.LEFT
+                )
+            }
+            constraintSet.applyTo(binding.titleContainer)
         }
-        constraintSet.applyTo(binding.titleContainer)
-
-    }
-
 
         binding.fab.setOnClickListener {
             isFlag = !isFlag

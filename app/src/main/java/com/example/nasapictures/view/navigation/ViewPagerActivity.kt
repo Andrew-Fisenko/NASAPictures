@@ -1,8 +1,6 @@
 package com.example.nasapictures.view.navigation
 
-import android.animation.ObjectAnimator
 import android.os.Bundle
-import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.example.nasapictures.R
 import com.example.nasapictures.databinding.ActivityViewPagerBinding
@@ -21,11 +19,7 @@ class ViewPagerActivity : AppCompatActivity() {
         binding.viewPager.adapter = ViewPager2Adapter(this)
 
         bindTabLayout()
-
-
     }
-
-
 
     private fun bindTabLayout() {
         TabLayoutMediator(

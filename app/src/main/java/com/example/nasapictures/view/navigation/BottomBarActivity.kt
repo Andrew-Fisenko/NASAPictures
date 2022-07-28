@@ -1,16 +1,11 @@
 package com.example.nasapictures.view.navigation
 
-import android.animation.ObjectAnimator
 import android.os.Bundle
-import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.example.nasapictures.R
 import com.example.nasapictures.databinding.ActivityBottomBarBinding
-import com.example.nasapictures.databinding.ActivityViewPagerBinding
 import com.google.android.material.badge.BadgeDrawable
-import com.google.android.material.tabs.TabLayout
-import com.google.android.material.tabs.TabLayoutMediator
 
 class BottomBarActivity : AppCompatActivity() {
 
@@ -23,10 +18,16 @@ class BottomBarActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.bottomNavigationView.setOnItemSelectedListener {
-            when(it.itemId){
-                R.id.action_view_earth -> {navigateTo(EarthFragment()); true}
-                R.id.action_view_mars -> {navigateTo(MarsFragment()); true}
-                R.id.action_view_system -> {navigateTo(SystemFragment()); true}
+            when (it.itemId) {
+                R.id.action_view_earth -> {
+                    navigateTo(EarthFragment()); true
+                }
+                R.id.action_view_mars -> {
+                    navigateTo(MarsFragment()); true
+                }
+                R.id.action_view_system -> {
+                    navigateTo(SystemFragment()); true
+                }
                 else -> true
             }
         }
@@ -40,7 +41,7 @@ class BottomBarActivity : AppCompatActivity() {
 
     }
 
-    fun navigateTo (fragment: Fragment){
-            supportFragmentManager.beginTransaction().replace(R.id.container, fragment).commit()
+    fun navigateTo(fragment: Fragment) {
+        supportFragmentManager.beginTransaction().replace(R.id.container, fragment).commit()
     }
 }

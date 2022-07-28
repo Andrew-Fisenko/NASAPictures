@@ -5,7 +5,12 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.AnticipateOvershootInterpolator
+import androidx.constraintlayout.widget.ConstraintSet
 import androidx.fragment.app.Fragment
+import androidx.transition.ChangeBounds
+import androidx.transition.TransitionManager
+import com.example.nasapictures.R
 import com.example.nasapictures.databinding.FragmentSystemBinding
 
 class SystemFragment : Fragment() {
@@ -14,6 +19,7 @@ class SystemFragment : Fragment() {
     private val binding get() = _binding!!
 
     var isFlag = false
+    var isFlag2 = false
     var duration = 2000L
     var duration2 = 1000L
 
@@ -27,6 +33,31 @@ class SystemFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        val constraintSet = ConstraintSet()
+        constraintSet.clone(context, R.layout.fragment_system)
+
+        binding.systemImage.setOnClickListener {
+            isFlag2 = !isFlag2
+            val changeBounds = ChangeBounds()
+            changeBounds.duration = 2000L
+            changeBounds.interpolator = AnticipateOvershootInterpolator(2.0f)
+            TransitionManager.beginDelayedTransition(binding.titleContainer, changeBounds)
+            if (isFlag2) {
+                constraintSet.connect(
+                    R.id.systemTitle,
+                    ConstraintSet.RIGHT, R.id.titleContainer,
+                    ConstraintSet.RIGHT
+                )
+            } else {
+                constraintSet.connect(
+                    R.id.systemTitle,
+                    ConstraintSet.RIGHT, R.id.titleContainer,
+                    ConstraintSet.LEFT
+                )
+            }
+            constraintSet.applyTo(binding.titleContainer)
+        }
 
         binding.fab.setOnClickListener {
             isFlag = !isFlag
