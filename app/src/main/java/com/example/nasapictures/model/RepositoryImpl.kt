@@ -6,7 +6,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 class RepositoryImpl : Repository {
 
-    private val baseUrl = "https://api.nasa.gov/"
+    private val baseUrl = "https://api.nasa.govs/"
 
     private val retrofit by lazy {
         Retrofit.Builder()
