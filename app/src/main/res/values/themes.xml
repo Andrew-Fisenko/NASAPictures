@@ -1,32 +1,94 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
+<resources>
+
     <style name="Base.Theme.NASAPictures" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your light theme here. -->
-        <!-- Primary brand color. -->
+
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+
         <item name="colorPrimary">@color/purple_500</item>
         <item name="colorPrimaryVariant">@color/purple_700</item>
         <item name="colorOnPrimary">@color/white</item>
-        <!-- Secondary brand color. -->
+
         <item name="colorSecondary">@color/teal_200</item>
         <item name="colorSecondaryVariant">@color/teal_700</item>
         <item name="colorOnSecondary">@color/black</item>
-        <item name="chipStyle">@style/MyChipStyle</item>
+
         <item name="textInputStyle">@style/MyTextInputLayoutStyle</item>
-        <!--   <item name="android:navigationBarColor">@android:color/transparent</item>
-           <item name="android:statusBarColor">@android:color/transparent</item>
-           <item name="android:windowLightStatusBar">?attr/isLightTheme</item>-->
+        <item name="tabTextColor">@color/black</item>
     </style>
 
-    <style name="MyChipStyle" parent="Widget.Material3.Chip.Suggestion">
+    <style name="MyBottomNavigationView" parent="Widget.Material3.BottomNavigationView">
+        <item name="itemActiveIndicatorStyle">@style/MyActiveIndicatorStyle</item>
+    </style>
+
+    <style name="MyActiveIndicatorStyle" parent="Widget.Material3.BottomNavigationView.ActiveIndicator">
+        <item name="shapeAppearance">@style/ShapeAppearance.Material3.Corner.None</item>
+        <item name="android:color">?colorPrimary</item>
+    </style>
+
+    <style name="MyChipStyleViolet" parent="Widget.Material3.Chip.Suggestion">
         <item name="chipBackgroundColor">@drawable/my_selector_backgroundchip</item>
-        <item name="rippleColor">#2E8B57</item>
+        <item name="rippleColor">#9370DB</item>
+        <item name="android:textAppearance">@style/chipTextAppearanceViolet</item>
+    </style>
+
+    <style name="chipTextAppearanceViolet" parent="Widget.Material3.Chip.Suggestion">
+        <item name="android:textSize">18sp</item>
+        <item name="android:fontFamily">@font/splash_regular</item>
+    </style>
+
+    <style name="MyChipStyleAqua" parent="Widget.Material3.Chip.Suggestion">
+        <item name="chipBackgroundColor">@drawable/my_selector_backgroundchip</item>
+        <item name="rippleColor">#00FFFF</item>
+        <item name="android:textAppearance">@style/chipTextAppearanceAqua</item>
+    </style>
+
+    <style name="chipTextAppearanceAqua" parent="Widget.Material3.Chip.Suggestion">
+        <item name="android:textSize">18sp</item>
+        <item name="android:fontFamily">@font/aclonica</item>
+    </style>
+
+    <style name="MyChipStyleWalkman" parent="Widget.Material3.Chip.Suggestion">
+        <item name="chipBackgroundColor">@drawable/my_selector_backgroundchip</item>
+        <item name="rippleColor">#FF6347</item>
+        <item name="android:textAppearance">@style/chipTextAppearanceWalkman</item>
+    </style>
+
+    <style name="chipTextAppearanceWalkman" parent="Widget.Material3.Chip.Suggestion">
+        <item name="android:textSize">18sp</item>
+        <item name="android:fontFamily">@font/finlandica_variable_font_wght</item>
     </style>
 
     <style name="MyTextInputLayoutStyle" parent="Widget.Material3.TextInputLayout.OutlinedBox">
-        <item name="helperTextTextColor">#FF6347</item>
-        <item name="counterTextColor">@drawable/my_selector_backgroundchip</item>
+        <item name="helperTextTextColor">@color/black</item>
+        <item name="counterTextColor">@color/black</item>
     </style>
 
-    <style name="Theme.NASAPictures" parent="Base.Theme.NASAPictures" />
+    <style name="ThemeViolet" parent="Base.Theme.NASAPictures">
+        <item name="colorPrimary">#9370DB</item>
+        <item name="colorSecondary">#DDA0DD</item>
+        <item name="fontFamily">@font/finlandica_variable_font_wght</item>
+        <item name="android:fontFamily">@font/finlandica_variable_font_wght</item>
+        <item name="chipStyle">@style/MyChipStyleViolet</item>
+        <item name="backgroundColor">@color/white</item>
+    </style>
+
+    <style name="ThemeAqua" parent="Base.Theme.NASAPictures">
+        <item name="colorPrimary">#00FFFF</item>
+        <item name="colorSecondary">#7FFFD4</item>
+        <item name="fontFamily">@font/finlandica_variable_font_wght</item>
+        <item name="android:fontFamily">@font/finlandica_variable_font_wght</item>
+        <item name="chipStyle">@style/MyChipStyleAqua</item>
+        <item name="backgroundColor">@color/white</item>
+    </style>
+
+    <style name="ThemeWalkman" parent="Base.Theme.NASAPictures">
+        <item name="colorPrimary">#FF6347</item>
+        <item name="colorSecondary">#FF4500</item>
+        <item name="fontFamily">@font/finlandica_variable_font_wght</item>
+        <item name="android:fontFamily">@font/finlandica_variable_font_wght</item>
+        <item name="chipStyle">@style/MyChipStyleWalkman</item>
+        <item name="backgroundColor">#FFA500</item>
+    </style>
 
 </resources>

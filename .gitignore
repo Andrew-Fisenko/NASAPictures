@@ -9,8 +9,8 @@
 /.idea/navEditor.xml
 /.idea/assetWizardSettings.xml
 .DS_Store
-
-
+.gitignore
+.idea/
 build/
 /captures
 .externalNativeBuild
