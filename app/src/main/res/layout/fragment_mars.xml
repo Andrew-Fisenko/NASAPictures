@@ -38,17 +38,17 @@
     </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.core.widget.NestedScrollView
-        android:id="@+id/nestedScrollView"
+        android:id="@+id/nestedScrollViewMars"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_behavior=".view.layouts.behaviors.NestedBehavior"
         tools:context=".ScrollingActivity">
 
         <TextView
-            android:id="@+id/longText"
-            android:alpha="1"
+            android:id="@+id/textMars"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:alpha="1"
             android:text="@string/large_text" />
 
     </androidx.core.widget.NestedScrollView>
@@ -103,59 +103,59 @@
         android:layout_gravity="center_horizontal|center"
         android:alpha="0"
         android:orientation="horizontal"
-        app:layout_anchor="@+id/nestedScrollView"
+        app:layout_anchor="@+id/nestedScrollViewMars"
         app:layout_anchorGravity="center">
 
-    <TextView
-        android:id="@+id/text_1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginEnd="5dp"
-        android:text="Option 1"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@id/image_1"
-        app:layout_constraintTop_toTopOf="parent" />
+        <TextView
+            android:id="@+id/text_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginEnd="5dp"
+            android:text="Option 1"
+            android:textStyle="bold"
+            android:textSize="22sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/image_1"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageView
-        android:id="@+id/image_1"
-        android:layout_width="16dp"
-        android:layout_height="16dp"
-        android:layout_gravity="center"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@id/text_1"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_archive" />
+        <ImageView
+            android:id="@+id/image_1"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
 
-    <TextView
-        android:id="@+id/text_2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginEnd="5dp"
-        android:text="Option 2"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@id/image_2"
-        app:layout_constraintTop_toBottomOf="@id/text_1" />
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/text_1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_archive" />
 
-    <ImageView
-        android:id="@+id/image_2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@id/text_2"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/image_1"
-        app:srcCompat="@drawable/ic_send" />
+        <TextView
+            android:id="@+id/text_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textStyle="bold"
+            android:textSize="22sp"
+            android:text="Option 2"
+            android:layout_marginTop="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/image_2"
+            app:layout_constraintTop_toBottomOf="@id/text_1" />
 
- </androidx.constraintlayout.widget.ConstraintLayout>
+        <ImageView
+            android:id="@+id/image_2"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
 
+            android:layout_marginTop="20dp"
+            app:layout_constraintEnd_toStartOf="@id/text_2"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/image_1"
+            app:srcCompat="@drawable/ic_send" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

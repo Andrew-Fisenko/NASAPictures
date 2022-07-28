@@ -8,8 +8,6 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.constraintlayout.widget.ConstraintLayout
-import androidx.coordinatorlayout.widget.CoordinatorLayout
-import androidx.core.view.WindowCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.transition.ChangeBounds
@@ -71,7 +69,6 @@ class PictureOfTheDayFragment(i: Int) : Fragment() {
             })
         }
 
-
         binding.imageView.setOnClickListener {
             isFlag = !isFlag
 
@@ -85,7 +82,7 @@ class PictureOfTheDayFragment(i: Int) : Fragment() {
 
             transitionSet.ordering = TransitionSet.ORDERING_TOGETHER
 
-            transitionSet.addTransition(changeBounds)// важен порядок, обязетельно changeImageTransform после changeBounds
+            transitionSet.addTransition(changeBounds)
             transitionSet.addTransition(changeImageTransform)
 
             TransitionManager.beginDelayedTransition(binding.root, transitionSet)
@@ -98,103 +95,96 @@ class PictureOfTheDayFragment(i: Int) : Fragment() {
             }
             binding.imageView.layoutParams = params
         }
-
-
-
 //        (requireActivity() as MainActivity).setSupportActionBar(binding.bottomAppBar)
 //        setHasOptionsMenu(true)
-}
+    }
 
-override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-    super.onCreateOptionsMenu(menu, inflater)
-    inflater.inflate(R.menu.menu_main, menu)
-}
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        super.onCreateOptionsMenu(menu, inflater)
+        inflater.inflate(R.menu.menu_main, menu)
+    }
 
-override fun onOptionsItemSelected(item: MenuItem): Boolean {
-    when (item.itemId) {
-        R.id.action_favorite -> {}
-        R.id.action_settings -> {
-            requireActivity().supportFragmentManager.beginTransaction().hide(this)
-                .add(R.id.container, SettingsFragment.newInstance()).addToBackStack("").commit()
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.action_favorite -> {}
+            R.id.action_settings -> {
+                requireActivity().supportFragmentManager.beginTransaction().hide(this)
+                    .add(R.id.container, SettingsFragment.newInstance()).addToBackStack("").commit()
+            }
+            android.R.id.home -> {
+                activity?.let {
+                    BottomNavigationDrawerFragment().show(it.supportFragmentManager, "tag")
+                }
+            }
         }
-        android.R.id.home -> {
-            activity?.let {
-                BottomNavigationDrawerFragment().show(it.supportFragmentManager, "tag")
+        return super.onOptionsItemSelected(item)
+    }
+
+    private fun newDate(i: Int): String {
+        val now = Calendar.getInstance()
+        val year = now.get(Calendar.YEAR)
+        val month = now.get(Calendar.MONTH)
+        val day = now.get(Calendar.DAY_OF_MONTH)
+        return if (day - i > 0) {
+            "${year}-${month + 1}-${day - i}"
+        } else if (month == 4 || month == 6 || month == 9 || month == 11) {
+            "${year}-${month}-${31 - i}"
+        } else if (month == 2) {
+            "${year}-${month}-${29 - i}"
+        } else {
+            "${year}-${month}-${32 - i}"
+        }
+    }
+
+    private fun renderData(appState: AppState) {
+        when (appState) {
+            is AppState.Error -> {
+                binding.loadingLayout.visibility = View.GONE
+                binding.imageView.setImageResource(R.drawable.ic_load_error_vector)
+                val throwable = appState.error
+                Snackbar.make(binding.imageView, "Error $throwable", Snackbar.LENGTH_LONG).show()
+            }
+            is AppState.Loading -> {
+                binding.loadingLayout.visibility = View.VISIBLE
+                binding.imageView.setImageResource(R.drawable.ic_no_photo_vector)
+            }
+            is AppState.Success -> {
+                binding.loadingLayout.visibility = View.GONE
+                if (appState.pictureOfTheDayResponseData.mediaType == "video") {
+                    showAVideoUrl(appState.pictureOfTheDayResponseData.url)
+                } else {
+                    binding.imageView.load(appState.pictureOfTheDayResponseData.url)
+                    Snackbar.make(binding.imageView, "Success", Snackbar.LENGTH_LONG).show()
+                }
             }
         }
     }
-    return super.onOptionsItemSelected(item)
-}
 
-
-private fun newDate(i: Int): String {
-    val now = Calendar.getInstance()
-    val year = now.get(Calendar.YEAR)
-    val month = now.get(Calendar.MONTH)
-    val day = now.get(Calendar.DAY_OF_MONTH)
-    return if (day - i > 0) {
-        "${year}-${month + 1}-${day - i}"
-    } else if (month == 4 || month == 6 || month == 9 || month == 11) {
-        "${year}-${month}-${31 - i}"
-    } else if (month == 2) {
-        "${year}-${month}-${29 - i}"
-    } else {
-        "${year}-${month}-${32 - i}"
+    companion object {
+        fun newInstance(i: Int) = PictureOfTheDayFragment(i)
     }
-}
 
-private fun renderData(appState: AppState) {
-    when (appState) {
-        is AppState.Error -> {
-            binding.loadingLayout.visibility = View.GONE
-            binding.imageView.setImageResource(R.drawable.ic_load_error_vector)
-            val throwable = appState.error
-            Snackbar.make(binding.imageView, "Error $throwable", Snackbar.LENGTH_LONG).show()
-        }
-        is AppState.Loading -> {
-            binding.loadingLayout.visibility = View.VISIBLE
-            binding.imageView.setImageResource(R.drawable.ic_no_photo_vector)
-        }
-        is AppState.Success -> {
-            binding.loadingLayout.visibility = View.GONE
-            if (appState.pictureOfTheDayResponseData.mediaType == "video") {
-                showAVideoUrl(appState.pictureOfTheDayResponseData.url)
-            } else {
-                binding.imageView.load(appState.pictureOfTheDayResponseData.url)
-                Snackbar.make(binding.imageView, "Success", Snackbar.LENGTH_LONG).show()
-
+    private fun showAVideoUrl(videoUrl: String) = with(binding) {
+        with(binding) {
+            imageView.visibility = View.GONE
+            videoOfTheDay.visibility = View.VISIBLE
+            imageViewSmall.visibility = View.VISIBLE
+            binding.imageViewSmall.setImageResource(R.drawable.ic_no_photo_vector)
+            videoOfTheDay.text = "We do not have any pictures today, \nbut we have a video! " +
+                    "\n Tap HERE to watch"
+            videoOfTheDay.setOnClickListener {
+                val i = Intent(Intent.ACTION_VIEW).apply {
+                    data = Uri.parse(videoUrl)
+                }
+                startActivity(i)
             }
-
-
         }
     }
-}
 
-companion object {
-    fun newInstance(i: Int) = PictureOfTheDayFragment(i)
-}
-
-private fun showAVideoUrl(videoUrl: String) = with(binding) {
-    with(binding) {
-        imageView.visibility = View.GONE
-        videoOfTheDay.visibility = View.VISIBLE
-        imageViewSmall.visibility = View.VISIBLE
-        binding.imageViewSmall.setImageResource(R.drawable.ic_no_photo_vector)
-        videoOfTheDay.text = "We do not have any pictures today, but we have a video! " +
-                "\n Tap HERE to watch"
-        videoOfTheDay.setOnClickListener {
-            val i = Intent(Intent.ACTION_VIEW).apply {
-                data = Uri.parse(videoUrl)
-            }
-            startActivity(i)
-        }
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
-}
-
-override fun onDestroyView() {
-    super.onDestroyView()
-    _binding = null
-}
 }
 
 
