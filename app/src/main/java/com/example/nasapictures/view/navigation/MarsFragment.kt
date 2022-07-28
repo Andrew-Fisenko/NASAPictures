@@ -28,6 +28,10 @@ class MarsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        binding.nestedScrollViewMars.setOnScrollChangeListener{v, scrollX, scrollY, oldScrollX, oldScrollY ->
+            binding.appBar.isSelected = binding.nestedScrollViewMars.canScrollVertically(-1)
+        }
+
         binding.fab.setOnClickListener {
             isFlag = !isFlag
             if (isFlag) {
