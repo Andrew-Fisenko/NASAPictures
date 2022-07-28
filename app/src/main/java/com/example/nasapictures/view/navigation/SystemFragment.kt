@@ -37,6 +37,10 @@ class SystemFragment : Fragment() {
         val constraintSet = ConstraintSet()
         constraintSet.clone(context, R.layout.fragment_system)
 
+        binding.nestedScrollViewSystem.setOnScrollChangeListener { v, scrollX, scrollY, oldScrollX, oldScrollY ->
+            binding.header.isSelected = binding.nestedScrollViewSystem.canScrollVertically(-1)
+        }
+
         binding.systemImage.setOnClickListener {
             isFlag2 = !isFlag2
             val changeBounds = ChangeBounds()
