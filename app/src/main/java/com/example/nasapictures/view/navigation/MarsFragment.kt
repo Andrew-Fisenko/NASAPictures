@@ -39,7 +39,7 @@ class MarsFragment : Fragment() {
         constraintSet.clone(context, R.layout.fragment_mars)
 
         binding.nestedScrollViewMars.setOnScrollChangeListener { v, scrollX, scrollY, oldScrollX, oldScrollY ->
-            binding.appBar.isSelected = binding.nestedScrollViewMars.canScrollVertically(-1)
+            binding.header.isSelected = binding.nestedScrollViewMars.canScrollVertically(-1)
         }
 
         binding.marsImage.setOnClickListener {

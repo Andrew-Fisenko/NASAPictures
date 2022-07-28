@@ -5,6 +5,21 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <FrameLayout
+        android:id="@+id/header"
+        android:layout_width="match_parent"
+        android:layout_height="65dp"
+        android:background="#9370DB"
+        android:alpha="1"
+        android:stateListAnimator="@animator/toolbar_elevation"
+        tools:ignore="MissingConstraints" >
+
+
+
+
+
+    </FrameLayout>
+
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:id="@+id/marsContainer"
         android:layout_width="match_parent"
@@ -173,7 +188,7 @@
         android:layout_gravity="center"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="20dp"
-        android:text="@string/mars"
+        android:text="@string/solar_system"
         android:textSize="32sp"
         android:textStyle="bold"
         app:layout_constraintRight_toLeftOf="@id/titleContainer"
