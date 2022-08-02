@@ -6,9 +6,15 @@
 
 
     <androidx.appcompat.widget.AppCompatTextView
+<<<<<<< HEAD
         android:id="@+id/name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+=======
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Заголовок"
+>>>>>>> origin/Lesson_6
         android:textSize="35sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
