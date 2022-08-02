@@ -31,6 +31,7 @@ class ViewPagerActivity : AppCompatActivity() {
                         0 -> ("Earth")
                         1 -> ("Mars")
                         2 -> ("Solar system")
+                        3 -> ("Notes")
                         else -> ("Error")
                     }
                 }
