@@ -14,9 +14,9 @@
         app:srcCompat="@drawable/bg_earth" />
 
     <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Земля"
         android:textSize="35sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/earthImageView"
