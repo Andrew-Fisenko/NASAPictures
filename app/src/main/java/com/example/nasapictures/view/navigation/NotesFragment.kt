@@ -6,12 +6,25 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.nasapictures.databinding.FragmentNotesBinding
+import com.example.nasapictures.model.AddItem
+import com.example.nasapictures.model.RemoveItem
 import com.example.nasapictures.view.picture.PictureOfTheDayFragment
 
 class NotesFragment : Fragment() {
 
     private var _binding: FragmentNotesBinding? = null
     private val binding get() = _binding!!
+    lateinit var adapter: RecyclerAdapter
+    val data = arrayListOf(
+        Data("Заголовок", type = TYPE_HEADER),
+        Data("Earth", type = TYPE_EARTH),
+        Data("Earth", type = TYPE_EARTH),
+        Data("Mars", type = TYPE_MARS),
+        Data("Earth", type = TYPE_EARTH),
+        Data("Earth", type = TYPE_EARTH),
+        Data("Earth", type = TYPE_EARTH),
+        Data("Mars", type = TYPE_MARS)
+    )
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -23,18 +36,17 @@ class NotesFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        adapter = RecyclerAdapter(data,callbackAdd,callbackRemove)
+        binding.recyclerView.adapter = adapter
+    }
 
-        val data = arrayListOf(
-            Data("Заголовок", type = TYPE_HEADER),
-            Data("Earth", type = TYPE_EARTH),
-            Data("Earth", type = TYPE_EARTH),
-            Data("Mars", type = TYPE_MARS),
-            Data("Earth", type = TYPE_EARTH),
-            Data("Earth", type = TYPE_EARTH),
-            Data("Earth", type = TYPE_EARTH),
-            Data("Mars", type = TYPE_MARS)
-        )
-        binding.recyclerView.adapter = RecyclerAdapter(data)
+    private val callbackAdd = AddItem {
+        data.add(it, Data("Mars(New)", type= TYPE_MARS))
+        adapter.setListDataAdd(data,it)
+    }
+    private val callbackRemove = RemoveItem {
+        data.removeAt(it)
+        adapter.setListDataRemove(data,it)
     }
 
     companion object {

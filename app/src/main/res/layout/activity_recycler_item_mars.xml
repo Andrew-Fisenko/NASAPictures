@@ -13,20 +13,35 @@
         app:srcCompat="@drawable/bg_mars" />
 
     <androidx.appcompat.widget.AppCompatTextView
-<<<<<<< HEAD
         android:id="@+id/name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-=======
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Марс"
->>>>>>> origin/Lesson_6
         android:textSize="35sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/marsImageView"
         app:layout_constraintStart_toEndOf="@+id/marsImageView"
         app:layout_constraintTop_toTopOf="@+id/marsImageView" />
+
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/addItemImageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:background="?colorPrimary"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_plus_fab" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/removeItemImageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/addItemImageView"
+        app:srcCompat="@drawable/ic_archive" />
+
 
     <View
         android:layout_width="match_parent"
