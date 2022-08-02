@@ -36,14 +36,20 @@ class NotesFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        adapter = RecyclerAdapter(data,callbackAdd,callbackRemove)
+        adapter = RecyclerAdapter(data,callbackAddEarth, callbackAddMars, callbackRemove)
         binding.recyclerView.adapter = adapter
     }
 
-    private val callbackAdd = AddItem {
+    private val callbackAddEarth = AddItem (){
+        data.add(it, Data("Earth(New)", type= TYPE_EARTH))
+        adapter.setListDataAdd(data,it)
+    }
+
+    private val callbackAddMars = AddItem (){
         data.add(it, Data("Mars(New)", type= TYPE_MARS))
         adapter.setListDataAdd(data,it)
     }
+
     private val callbackRemove = RemoveItem {
         data.removeAt(it)
         adapter.setListDataRemove(data,it)

@@ -1,6 +1,5 @@
 package com.example.nasapictures.view.navigation
 
-
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,7 +10,7 @@ import com.example.nasapictures.databinding.ActivityRecyclerItemMarsBinding
 import com.example.nasapictures.model.AddItem
 import com.example.nasapictures.model.RemoveItem
 
-class RecyclerAdapter(private var listData: List<Data>, val callbackAdd: AddItem, val callbackRemove: RemoveItem) :
+class RecyclerAdapter(private var listData: List<Data>, val callbackAddEarth: AddItem, val callbackAddMars: AddItem,val callbackRemove: RemoveItem) :
     RecyclerView.Adapter<RecyclerAdapter.BaseViewHolder>(){
 
     fun setListDataRemove(listDataNew: List<Data>,position: Int){
@@ -23,7 +22,6 @@ class RecyclerAdapter(private var listData: List<Data>, val callbackAdd: AddItem
         listData = listDataNew
         notifyItemInserted(position)
     }
-
 
     override fun getItemViewType(position: Int): Int {
         return listData[position].type
@@ -64,10 +62,16 @@ class RecyclerAdapter(private var listData: List<Data>, val callbackAdd: AddItem
         }
     }
 
-    class EarthViewHolder(val binding: ActivityRecyclerItemEarthBinding) :
+    inner class EarthViewHolder(val binding: ActivityRecyclerItemEarthBinding) :
         BaseViewHolder(binding.root) {
         override fun bind(data:Data){
             binding.name.text = data.name
+            binding.addItemImageView.setOnClickListener {
+                callbackAddEarth.add(layoutPosition)
+            }
+            binding.removeItemImageView.setOnClickListener {
+                callbackRemove.remove(layoutPosition)
+            }
         }
     }
 
@@ -76,15 +80,13 @@ class RecyclerAdapter(private var listData: List<Data>, val callbackAdd: AddItem
         override fun bind(data: Data) {
             binding.name.text = data.name
             binding.addItemImageView.setOnClickListener {
-                callbackAdd.add(layoutPosition)
+                callbackAddMars.add(layoutPosition)
             }
             binding.removeItemImageView.setOnClickListener {
                 callbackRemove.remove(layoutPosition)
             }
-
         }
     }
-
 
     abstract class BaseViewHolder(view: View) :
         RecyclerView.ViewHolder(view) {
