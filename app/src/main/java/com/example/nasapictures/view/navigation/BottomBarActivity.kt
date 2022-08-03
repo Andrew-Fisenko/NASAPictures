@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.example.nasapictures.R
 import com.example.nasapictures.databinding.ActivityBottomBarBinding
+import com.example.nasapictures.view.recycler.NotesFragment
 import com.google.android.material.badge.BadgeDrawable
 
 class BottomBarActivity : AppCompatActivity() {

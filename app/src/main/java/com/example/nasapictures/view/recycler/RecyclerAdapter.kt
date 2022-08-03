@@ -1,12 +1,11 @@
-package com.example.nasapictures.view.navigation
+package com.example.nasapictures.view.recycler
 
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
-import androidx.core.content.ContentProviderCompat.requireContext
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
+import com.example.nasapictures.R
 import com.example.nasapictures.databinding.ActivityRecyclerItemEarthBinding
 import com.example.nasapictures.databinding.ActivityRecyclerItemHeaderBinding
 import com.example.nasapictures.databinding.ActivityRecyclerItemMarsBinding
@@ -20,7 +19,7 @@ class RecyclerAdapter(
     val callbackAddMars: AddItem,
     val callbackRemove: RemoveItem
 ) :
-    RecyclerView.Adapter<RecyclerAdapter.BaseViewHolder>() {
+    RecyclerView.Adapter<RecyclerAdapter.BaseViewHolder>(), ItemTouchHelperAdapter {
 
     fun setListDataRemove(listDataNew: MutableList<Pair<Data, Boolean>>, position: Int) {
         listData = listDataNew
@@ -116,7 +115,6 @@ class RecyclerAdapter(
                         .show()
                 }
             }
-
             binding.marsDescriptionTextView.visibility =
                 if (listData[layoutPosition].second) View.VISIBLE else View.GONE
 
@@ -126,12 +124,30 @@ class RecyclerAdapter(
                 }
                 notifyItemChanged(layoutPosition)
             }
-
         }
     }
 
     abstract class BaseViewHolder(view: View) :
-        RecyclerView.ViewHolder(view) {
+        RecyclerView.ViewHolder(view), ItemTouchHelperViewHolder {
         abstract fun bind(data: Pair<Data, Boolean>)
+
+        override fun onItemSelect() {
+            itemView.setBackgroundColor(ContextCompat.getColor(itemView.context, R.color.teal_200))
+        }
+
+        override fun onItemClear() {
+            itemView.setBackgroundColor(0)
+        }
+    }
+
+    override fun onItemMove(fromPosition: Int, toPosition: Int) {
+        listData.removeAt(fromPosition).apply {
+            listData.add(toPosition, this)
+        }
+        notifyItemMoved(fromPosition, toPosition)
+    }
+
+    override fun onItemDismiss(position: Int) {
+        callbackRemove.remove(position)
     }
 }

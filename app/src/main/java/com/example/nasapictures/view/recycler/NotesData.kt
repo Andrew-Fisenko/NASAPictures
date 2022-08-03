@@ -1,4 +1,4 @@
-package com.example.nasapictures.view.navigation
+package com.example.nasapictures.view.recycler
 
 const val TYPE_EARTH = 1
 const val TYPE_MARS = 2

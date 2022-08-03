@@ -1,10 +1,11 @@
-package com.example.nasapictures.view.navigation
+package com.example.nasapictures.view.recycler
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.ItemTouchHelper
 import com.example.nasapictures.databinding.FragmentNotesBinding
 import com.example.nasapictures.model.AddItem
 import com.example.nasapictures.model.RemoveItem
@@ -38,6 +39,8 @@ class NotesFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         adapter = RecyclerAdapter(data, callbackAddEarth, callbackAddMars, callbackRemove)
         binding.recyclerView.adapter = adapter
+
+        ItemTouchHelper(ItemTouchHelperCallback(adapter)).attachToRecyclerView((binding.recyclerView))
     }
 
     private val callbackAddEarth = AddItem() {

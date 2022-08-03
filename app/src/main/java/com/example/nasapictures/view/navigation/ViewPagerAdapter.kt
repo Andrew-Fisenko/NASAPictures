@@ -3,6 +3,7 @@ package com.example.nasapictures.view.navigation
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentStatePagerAdapter
+import com.example.nasapictures.view.recycler.NotesFragment
 
 class ViewPagerAdapter(fragmentManager: FragmentManager) :
     FragmentStatePagerAdapter(fragmentManager) {
