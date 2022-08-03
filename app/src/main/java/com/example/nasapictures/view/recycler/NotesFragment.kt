@@ -17,14 +17,14 @@ class NotesFragment : Fragment() {
     private val binding get() = _binding!!
     lateinit var adapter: RecyclerAdapter
     val data = arrayListOf(
-        Pair(Data("Заголовок", type = TYPE_HEADER), false),
-        Pair(Data("Earth", type = TYPE_EARTH), false),
-        Pair(Data("Earth", type = TYPE_EARTH), false),
-        Pair(Data("Mars", type = TYPE_MARS), false),
-        Pair(Data("Earth", type = TYPE_EARTH), false),
-        Pair(Data("Earth", type = TYPE_EARTH), false),
-        Pair(Data("Earth", type = TYPE_EARTH), false),
-        Pair(Data("Mars", type = TYPE_MARS), false),
+        Pair(Data(id=0,"Заголовок", type = TYPE_HEADER), false),
+        Pair(Data(id=1,"Earth", type = TYPE_EARTH), false),
+        Pair(Data(id=2,"Earth", type = TYPE_EARTH), false),
+        Pair(Data(id=3,"Mars", type = TYPE_MARS), false),
+        Pair(Data(id=4,"Earth", type = TYPE_EARTH), false),
+        Pair(Data(id=5,"Earth", type = TYPE_EARTH), false),
+        Pair(Data(id=6,"Earth", type = TYPE_EARTH), false),
+        Pair(Data(id=7,"Mars", type = TYPE_MARS), false),
     )
 
     override fun onCreateView(
@@ -44,12 +44,12 @@ class NotesFragment : Fragment() {
     }
 
     private val callbackAddEarth = AddItem() {
-        data.add(it, Pair(Data("Earth(New)", type = TYPE_EARTH), false))
+        data.add(it, Pair(Data(id=0,"Earth(New)", type = TYPE_EARTH), false))
         adapter.setListDataAdd(data, it)
     }
 
     private val callbackAddMars = AddItem() {
-        data.add(it, Pair(Data("Mars(New)", type = TYPE_MARS), false))
+        data.add(it, Pair(Data(id=0,"Mars(New)", type = TYPE_MARS), false))
         adapter.setListDataAdd(data, it)
     }
 

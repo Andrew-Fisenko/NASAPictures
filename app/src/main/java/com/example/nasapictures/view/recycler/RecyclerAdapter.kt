@@ -1,9 +1,12 @@
 package com.example.nasapictures.view.recycler
 
 import android.view.LayoutInflater
+import android.view.TextureView
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.core.content.ContextCompat
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.nasapictures.R
 import com.example.nasapictures.databinding.ActivityRecyclerItemEarthBinding
@@ -11,6 +14,9 @@ import com.example.nasapictures.databinding.ActivityRecyclerItemHeaderBinding
 import com.example.nasapictures.databinding.ActivityRecyclerItemMarsBinding
 import com.example.nasapictures.model.AddItem
 import com.example.nasapictures.model.RemoveItem
+import com.example.nasapictures.view.recycler.diffutils.Change
+import com.example.nasapictures.view.recycler.diffutils.DiffUtilCallback
+import com.example.nasapictures.view.recycler.diffutils.createCombinedPayload
 import com.google.android.material.snackbar.Snackbar
 
 class RecyclerAdapter(
@@ -20,6 +26,12 @@ class RecyclerAdapter(
     val callbackRemove: RemoveItem
 ) :
     RecyclerView.Adapter<RecyclerAdapter.BaseViewHolder>(), ItemTouchHelperAdapter {
+
+    fun setListDataRemoveForDiffUtil(listDataNew: MutableList<Pair<Data, Boolean>>) {
+        val diff = DiffUtil.calculateDiff(DiffUtilCallback(listData, listDataNew))
+        diff.dispatchUpdatesTo(this)
+        listData = listDataNew
+    }
 
     fun setListDataRemove(listDataNew: MutableList<Pair<Data, Boolean>>, position: Int) {
         listData = listDataNew
@@ -57,6 +69,20 @@ class RecyclerAdapter(
 
     override fun onBindViewHolder(holder: BaseViewHolder, position: Int) {
         holder.bind(listData[position])
+    }
+
+    override fun onBindViewHolder(
+        holder: BaseViewHolder,
+        position: Int,
+        payloads: MutableList<Any>
+    ) {
+       if (payloads.isEmpty()){
+           super.onBindViewHolder(holder, position, payloads)
+       }else{
+           val createCombinedPayload = createCombinedPayload(payloads as List<Change<Pair<Data>>>)
+           holder.itemView.findViewById<TextView>(R.id.name).text  =
+
+       }
     }
 
     override fun getItemCount(): Int {
