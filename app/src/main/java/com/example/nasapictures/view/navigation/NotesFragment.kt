@@ -16,14 +16,14 @@ class NotesFragment : Fragment() {
     private val binding get() = _binding!!
     lateinit var adapter: RecyclerAdapter
     val data = arrayListOf(
-        Data("Заголовок", type = TYPE_HEADER),
-        Data("Earth", type = TYPE_EARTH),
-        Data("Earth", type = TYPE_EARTH),
-        Data("Mars", type = TYPE_MARS),
-        Data("Earth", type = TYPE_EARTH),
-        Data("Earth", type = TYPE_EARTH),
-        Data("Earth", type = TYPE_EARTH),
-        Data("Mars", type = TYPE_MARS)
+        Pair(Data("Заголовок", type = TYPE_HEADER), false),
+        Pair(Data("Earth", type = TYPE_EARTH), false),
+        Pair(Data("Earth", type = TYPE_EARTH), false),
+        Pair(Data("Mars", type = TYPE_MARS), false),
+        Pair(Data("Earth", type = TYPE_EARTH), false),
+        Pair(Data("Earth", type = TYPE_EARTH), false),
+        Pair(Data("Earth", type = TYPE_EARTH), false),
+        Pair(Data("Mars", type = TYPE_MARS), false),
     )
 
     override fun onCreateView(
@@ -36,23 +36,23 @@ class NotesFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        adapter = RecyclerAdapter(data,callbackAddEarth, callbackAddMars, callbackRemove)
+        adapter = RecyclerAdapter(data, callbackAddEarth, callbackAddMars, callbackRemove)
         binding.recyclerView.adapter = adapter
     }
 
-    private val callbackAddEarth = AddItem (){
-        data.add(it, Data("Earth(New)", type= TYPE_EARTH))
-        adapter.setListDataAdd(data,it)
+    private val callbackAddEarth = AddItem() {
+        data.add(it, Pair(Data("Earth(New)", type = TYPE_EARTH), false))
+        adapter.setListDataAdd(data, it)
     }
 
-    private val callbackAddMars = AddItem (){
-        data.add(it, Data("Mars(New)", type= TYPE_MARS))
-        adapter.setListDataAdd(data,it)
+    private val callbackAddMars = AddItem() {
+        data.add(it, Pair(Data("Mars(New)", type = TYPE_MARS), false))
+        adapter.setListDataAdd(data, it)
     }
 
     private val callbackRemove = RemoveItem {
         data.removeAt(it)
-        adapter.setListDataRemove(data,it)
+        adapter.setListDataRemove(data, it)
     }
 
     companion object {

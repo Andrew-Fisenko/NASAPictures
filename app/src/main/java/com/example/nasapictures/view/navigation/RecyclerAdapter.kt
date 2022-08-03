@@ -15,25 +15,25 @@ import com.example.nasapictures.model.RemoveItem
 import com.google.android.material.snackbar.Snackbar
 
 class RecyclerAdapter(
-    private var listData: MutableList<Data>,
+    private var listData: MutableList<Pair<Data, Boolean>>,
     val callbackAddEarth: AddItem,
     val callbackAddMars: AddItem,
     val callbackRemove: RemoveItem
 ) :
     RecyclerView.Adapter<RecyclerAdapter.BaseViewHolder>() {
 
-    fun setListDataRemove(listDataNew: MutableList<Data>, position: Int) {
+    fun setListDataRemove(listDataNew: MutableList<Pair<Data, Boolean>>, position: Int) {
         listData = listDataNew
         notifyItemRemoved(position)
     }
 
-    fun setListDataAdd(listDataNew: MutableList<Data>, position: Int) {
+    fun setListDataAdd(listDataNew: MutableList<Pair<Data, Boolean>>, position: Int) {
         listData = listDataNew
         notifyItemInserted(position)
     }
 
     override fun getItemViewType(position: Int): Int {
-        return listData[position].type
+        return listData[position].first.type
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseViewHolder {
@@ -66,15 +66,15 @@ class RecyclerAdapter(
 
     class HeaderViewHolder(val binding: ActivityRecyclerItemHeaderBinding) :
         BaseViewHolder(binding.root) {
-        override fun bind(data: Data) {
-            binding.name.text = data.name
+        override fun bind(data: Pair<Data, Boolean>) {
+            binding.name.text = data.first.name
         }
     }
 
     inner class EarthViewHolder(val binding: ActivityRecyclerItemEarthBinding) :
         BaseViewHolder(binding.root) {
-        override fun bind(data: Data) {
-            binding.name.text = data.name
+        override fun bind(data: Pair<Data, Boolean>) {
+            binding.name.text = data.first.name
             binding.addItemImageView.setOnClickListener {
                 callbackAddEarth.add(layoutPosition)
             }
@@ -86,8 +86,8 @@ class RecyclerAdapter(
 
     inner class MarsViewHolder(val binding: ActivityRecyclerItemMarsBinding) :
         BaseViewHolder(binding.root) {
-        override fun bind(data: Data) {
-            binding.name.text = data.name
+        override fun bind(data: Pair<Data, Boolean>) {
+            binding.name.text = data.first.name
             binding.addItemImageView.setOnClickListener {
                 callbackAddMars.add(layoutPosition)
             }
@@ -115,7 +115,16 @@ class RecyclerAdapter(
                     Snackbar.make(binding.name, "Not available to move!", Snackbar.LENGTH_SHORT)
                         .show()
                 }
+            }
 
+            binding.marsDescriptionTextView.visibility =
+                if (listData[layoutPosition].second) View.VISIBLE else View.GONE
+
+            binding.marsImageView.setOnClickListener {
+                listData[layoutPosition] = listData[layoutPosition].let {
+                    it.first to !it.second
+                }
+                notifyItemChanged(layoutPosition)
             }
 
         }
@@ -123,6 +132,6 @@ class RecyclerAdapter(
 
     abstract class BaseViewHolder(view: View) :
         RecyclerView.ViewHolder(view) {
-        abstract fun bind(data: Data)
+        abstract fun bind(data: Pair<Data, Boolean>)
     }
 }

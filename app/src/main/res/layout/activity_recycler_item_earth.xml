@@ -71,7 +71,6 @@
         app:layout_constraintTop_toBottomOf="@id/addItemImageView"
         app:srcCompat="@drawable/ic_archive" />
 
-
     <View
         android:layout_width="match_parent"
         android:layout_height="1px"
