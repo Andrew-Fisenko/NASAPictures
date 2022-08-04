@@ -16,6 +16,7 @@ class NotesFragment : Fragment() {
     private var _binding: FragmentNotesBinding? = null
     private val binding get() = _binding!!
     lateinit var adapter: RecyclerAdapter
+    private var isNewList = false
     val data = arrayListOf(
         Pair(Data(id=0,"Заголовок", type = TYPE_HEADER), false),
         Pair(Data(id=1,"Earth", type = TYPE_EARTH), false),
@@ -41,6 +42,9 @@ class NotesFragment : Fragment() {
         binding.recyclerView.adapter = adapter
 
         ItemTouchHelper(ItemTouchHelperCallback(adapter)).attachToRecyclerView((binding.recyclerView))
+        binding.recyclerActivityDiffUtilFAB.setOnClickListener {
+            changeAdapterData()
+        }
     }
 
     private val callbackAddEarth = AddItem() {
@@ -56,6 +60,35 @@ class NotesFragment : Fragment() {
     private val callbackRemove = RemoveItem {
         data.removeAt(it)
         adapter.setListDataRemove(data, it)
+    }
+
+
+    private fun changeAdapterData() {
+        adapter.setListDataRemoveForDiffUtil(createItemList(isNewList).map { it }.toMutableList())
+        isNewList = !isNewList
+    }
+
+    private fun createItemList(instanceNumber: Boolean): List<Pair<Data, Boolean>> {
+        return when (instanceNumber) {
+            false -> listOf(
+                Pair(Data(0, "Header", type = TYPE_HEADER), false),
+                Pair(Data(1, "Mars", ""), false),
+                Pair(Data(2, "Mars", ""), false),
+                Pair(Data(3, "Mars", ""), false),
+                Pair(Data(4, "Mars", ""), false),
+                Pair(Data(5, "Mars", ""), false),
+                Pair(Data(6, "Mars", ""), false)
+            )
+            true -> listOf(
+                Pair(Data(0, "Header",type = TYPE_HEADER), false),
+                Pair(Data(1, "Mars", ""), false),
+                Pair(Data(2, "Jupiter", ""), false),
+                Pair(Data(3, "Mars", ""), false),
+                Pair(Data(4, "Neptune", ""), false),
+                Pair(Data(5, "Saturn", ""), false),
+                Pair(Data(6, "Mars", ""), false)
+            )
+        }
     }
 
     companion object {

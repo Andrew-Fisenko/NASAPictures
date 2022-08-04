@@ -76,13 +76,16 @@ class RecyclerAdapter(
         position: Int,
         payloads: MutableList<Any>
     ) {
-       if (payloads.isEmpty()){
-           super.onBindViewHolder(holder, position, payloads)
-       }else{
-           val createCombinedPayload = createCombinedPayload(payloads as List<Change<Pair<Data>>>)
-           holder.itemView.findViewById<TextView>(R.id.name).text  =
+        if (payloads.isEmpty()) {
+            super.onBindViewHolder(holder, position, payloads)
+        } else {
+            val createCombinedPayload =
+                createCombinedPayload(payloads as List<Change<Pair<Data, Boolean>>>)
+            if (createCombinedPayload.newData.first.name != createCombinedPayload.oldData.first.name)
+                holder.itemView.findViewById<TextView>(R.id.name).text =
+                    createCombinedPayload.newData.first.name
 
-       }
+        }
     }
 
     override fun getItemCount(): Int {
