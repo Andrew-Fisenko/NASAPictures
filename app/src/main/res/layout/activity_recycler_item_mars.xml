@@ -27,7 +27,8 @@
         android:id="@+id/addItemImageView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginRight="10dp"
         android:background="?colorPrimary"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -47,11 +48,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
+        android:paddingTop="20dp"
         android:tint="@color/design_default_color_error"
-        app:layout_constraintBottom_toBottomOf="@+id/name"
+        app:layout_constraintBottom_toTopOf="@+id/moveItemDown"
         app:layout_constraintEnd_toStartOf="@+id/addItemImageView"
-        app:layout_constraintStart_toEndOf="@+id/name"
-        app:layout_constraintTop_toTopOf="@+id/name"
+        app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@android:drawable/arrow_up_float" />
 
     <androidx.appcompat.widget.AppCompatImageView
@@ -59,11 +60,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
+        android:paddingTop="20dp"
         android:tint="@color/design_default_color_error"
-        app:layout_constraintBottom_toBottomOf="@+id/name"
-        app:layout_constraintEnd_toStartOf="@+id/addItemImageView"
-        app:layout_constraintStart_toEndOf="@+id/moveItemUp"
-        app:layout_constraintTop_toTopOf="@+id/name"
+        app:layout_constraintEnd_toStartOf="@+id/removeItemImageView"
+        app:layout_constraintTop_toBottomOf="@+id/moveItemUp"
         app:srcCompat="@android:drawable/arrow_down_float" />
 
     <androidx.appcompat.widget.AppCompatTextView

@@ -109,6 +109,38 @@ class RecyclerAdapter(
             binding.removeItemImageView.setOnClickListener {
                 callbackRemove.remove(layoutPosition)
             }
+            binding.moveItemUp.setOnClickListener {
+                if (layoutPosition > 1) {
+                    listData.removeAt(layoutPosition).apply {
+                        listData.add(layoutPosition - 1, this)
+                    }
+                    notifyItemMoved(layoutPosition, layoutPosition - 1)
+                } else {
+                    Snackbar.make(binding.name, "Not available to move!", Snackbar.LENGTH_SHORT)
+                        .show()
+                }
+            }
+            binding.moveItemDown.setOnClickListener {
+                if (layoutPosition < listData.size - 1) {
+                    listData.removeAt(layoutPosition).apply {
+                        listData.add(layoutPosition + 1, this)
+                    }
+                    notifyItemMoved(layoutPosition, layoutPosition + 1)
+                } else {
+                    Snackbar.make(binding.name, "Not available to move!", Snackbar.LENGTH_SHORT)
+                        .show()
+                }
+            }
+
+            binding.earthDescriptionTextView.visibility =
+                if (listData[layoutPosition].second) View.VISIBLE else View.GONE
+
+            binding.earthImageView.setOnClickListener {
+                listData[layoutPosition] = listData[layoutPosition].let {
+                    it.first to !it.second
+                }
+                notifyItemChanged(layoutPosition)
+            }
         }
     }
 
