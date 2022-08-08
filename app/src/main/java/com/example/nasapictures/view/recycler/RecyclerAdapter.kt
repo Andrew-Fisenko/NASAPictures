@@ -1,11 +1,13 @@
 package com.example.nasapictures.view.recycler
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.TextureView
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.core.content.ContextCompat
+
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.nasapictures.R
@@ -17,6 +19,7 @@ import com.example.nasapictures.model.RemoveItem
 import com.example.nasapictures.view.recycler.diffutils.Change
 import com.example.nasapictures.view.recycler.diffutils.DiffUtilCallback
 import com.example.nasapictures.view.recycler.diffutils.createCombinedPayload
+import com.google.android.material.color.MaterialColors.getColor
 import com.google.android.material.snackbar.Snackbar
 
 class RecyclerAdapter(
