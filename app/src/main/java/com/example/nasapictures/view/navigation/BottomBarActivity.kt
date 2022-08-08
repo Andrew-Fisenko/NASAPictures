@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.example.nasapictures.R
 import com.example.nasapictures.databinding.ActivityBottomBarBinding
+import com.example.nasapictures.view.recycler.NotesFragment
 import com.google.android.material.badge.BadgeDrawable
 
 class BottomBarActivity : AppCompatActivity() {
@@ -28,17 +29,19 @@ class BottomBarActivity : AppCompatActivity() {
                 R.id.action_view_system -> {
                     navigateTo(SystemFragment()); true
                 }
+                R.id.action_view_notes -> {
+                    navigateTo(NotesFragment()); true
+                }
                 else -> true
             }
         }
         binding.bottomNavigationView.selectedItemId = R.id.action_view_earth
 
-        val badge = binding.bottomNavigationView.getOrCreateBadge(R.id.action_view_system)
-        badge.number = 1000
+        val badge = binding.bottomNavigationView.getOrCreateBadge(R.id.action_view_notes)
+        badge.number = 10
         badge.maxCharacterCount = 5
         badge.badgeGravity = BadgeDrawable.BOTTOM_START
         //binding.bottomNavigationView.removeBadge(R.id.action_view_system)
-
     }
 
     private fun navigateTo(fragment: Fragment) {

@@ -29,7 +29,6 @@ class MarsFragment : Fragment() {
     ): View? {
         _binding = FragmentMarsBinding.inflate(inflater, container, false)
         return binding.root
-
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

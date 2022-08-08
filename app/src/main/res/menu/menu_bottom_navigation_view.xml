@@ -14,4 +14,8 @@
         android:id="@+id/action_view_system"
         android:icon="@drawable/ic_system"
         android:title="@string/system" />
+    <item
+        android:id="@+id/action_view_notes"
+        android:icon="@drawable/ic_archive"
+        android:title="@string/notes" />
 </menu>
