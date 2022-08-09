@@ -2,11 +2,16 @@ package com.example.nasapictures.view.navigation
 
 import android.animation.ObjectAnimator
 import android.os.Bundle
+import android.text.Spannable
+import android.text.SpannableString
+import android.text.style.AbsoluteSizeSpan
+import android.text.style.ForegroundColorSpan
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.animation.AnticipateOvershootInterpolator
 import androidx.constraintlayout.widget.ConstraintSet
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.transition.ChangeBounds
 import androidx.transition.TransitionManager
@@ -40,6 +45,20 @@ class SystemFragment : Fragment() {
         binding.nestedScrollViewSystem.setOnScrollChangeListener { v, scrollX, scrollY, oldScrollX, oldScrollY ->
             binding.header.isSelected = binding.nestedScrollViewSystem.canScrollVertically(-1)
         }
+
+        val text = binding.textSystem.text
+        val spannableString = SpannableString(text)
+        for (i in text.indices){
+            if(text[i] != ' '){
+                spannableString.setSpan(
+                    ForegroundColorSpan(ContextCompat.getColor(requireContext(),R.color.teal_700)),
+                    i,i+1,Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+                spannableString.setSpan(
+                   AbsoluteSizeSpan(32,true ), i,i+1,Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+            } else break
+        }
+        binding.textSystem.text = spannableString
+
 
         binding.systemImage.setOnClickListener {
             isFlag2 = !isFlag2

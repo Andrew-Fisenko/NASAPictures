@@ -18,12 +18,12 @@
             android:id="@+id/titleMars"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
             android:layout_gravity="center"
-            android:textSize="32sp"
             android:alpha="1"
+            android:gravity="center"
+            android:text="@string/mars"
             android:textColor="@color/white"
-            android:text="@string/mars" />
+            android:textSize="32sp" />
     </FrameLayout>
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout

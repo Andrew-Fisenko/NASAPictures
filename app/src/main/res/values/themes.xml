@@ -58,8 +58,8 @@
     <style name="ThemeViolet" parent="Base.Theme.NASAPictures">
         <item name="colorPrimary">#9370DB</item>
         <item name="colorSecondary">#DDA0DD</item>
-        <item name="fontFamily">@font/finlandica_variable_font_wght</item>
-        <item name="android:fontFamily">@font/finlandica_variable_font_wght</item>
+        <item name="fontFamily">@font/akaya_telivigala</item>
+        <item name="android:fontFamily">@font/akaya_telivigala</item>
         <item name="chipStyle">@style/MyChipStyleViolet</item>
         <item name="backgroundColor">@color/white</item>
     </style>

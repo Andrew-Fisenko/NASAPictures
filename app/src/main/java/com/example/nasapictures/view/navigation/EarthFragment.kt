@@ -28,6 +28,7 @@ class EarthFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         binding.viewPager.adapter = ViewPager2AdapterForEarthFragment(this)
         bindTabLayout()
+
     }
 
     private fun bindTabLayout() {
