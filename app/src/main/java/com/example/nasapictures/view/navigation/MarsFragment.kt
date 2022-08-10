@@ -161,13 +161,19 @@ class MarsFragment : Fragment() {
         binding.textMars.setText(spannableRainbow, TextView.BufferType.SPANNABLE)
         spannableRainbow = binding.textMars.text as SpannableString
         val map = mapOf(
-            0 to ContextCompat.getColor(requireContext(), R.color.red),
-            1 to ContextCompat.getColor(requireContext(), R.color.orange),
-            2 to ContextCompat.getColor(requireContext(), R.color.yellow),
-            3 to ContextCompat.getColor(requireContext(), R.color.green),
-            4 to ContextCompat.getColor(requireContext(), R.color.light_blue),
-            5 to ContextCompat.getColor(requireContext(), R.color.blue),
-            6 to ContextCompat.getColor(requireContext(),R.color.violet)
+            0 to activity?.let { ContextCompat.getColor(it.applicationContext, R.color.red) },
+            1 to activity?.let { ContextCompat.getColor(it.applicationContext, R.color.orange)},
+            2 to activity?.let { ContextCompat.getColor(it.applicationContext, R.color.yellow)},
+            3 to activity?.let { ContextCompat.getColor(it.applicationContext, R.color.green)},
+            4 to activity?.let { ContextCompat.getColor(it.applicationContext, R.color.light_blue)},
+            5 to activity?.let { ContextCompat.getColor(it.applicationContext, R.color.blue)},
+            6 to activity?.let { ContextCompat.getColor(it.applicationContext, R.color.violet)}
+//            1 to ContextCompat.getColor(requireContext(), R.color.orange),
+//            2 to ContextCompat.getColor(requireContext(), R.color.yellow),
+//            3 to ContextCompat.getColor(requireContext(), R.color.green),
+//            4 to ContextCompat.getColor(requireContext(), R.color.light_blue),
+//            5 to ContextCompat.getColor(requireContext(), R.color.blue),
+//            6 to ContextCompat.getColor(requireContext(),R.color.violet)
         )
         val spans = spannableRainbow.getSpans(
             0, spannableRainbow.length,
@@ -178,11 +184,11 @@ class MarsFragment : Fragment() {
         }
 
         var colorNumber = colorFirstNumber
-        for (i in 0 until binding.textMars.text.length) {
+        for (i in 1 until (binding.textMars.text.length - 6) step 5 ) {
             if (colorNumber == 5) colorNumber = 0 else colorNumber += 1
             spannableRainbow.setSpan(
-                ForegroundColorSpan(map.getValue(colorNumber)),
-                i, i + 1,
+                map.getValue(colorNumber)?.let { ForegroundColorSpan(it) },
+                i, i + 5,
                 Spannable.SPAN_EXCLUSIVE_INCLUSIVE
             )
         }
