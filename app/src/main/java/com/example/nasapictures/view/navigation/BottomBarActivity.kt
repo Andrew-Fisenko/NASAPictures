@@ -46,7 +46,12 @@ class BottomBarActivity : AppCompatActivity() {
 
     private fun navigateTo(fragment: Fragment) {
         val ft = supportFragmentManager.beginTransaction();
-        ft.setCustomAnimations(R.animator.slide_in_left, R.animator.slide_in_right);
+        ft.setCustomAnimations(
+            R.anim.slide_in,
+            R.anim.slide_out,
+            R.anim.fade_in,
+            R.anim.fade_out
+        );
         ft.replace(R.id.container, fragment).commit()
     }
 }
