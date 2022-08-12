@@ -26,6 +26,7 @@
             android:layout_gravity="bottom"
             android:background="#9370DB"
             android:backgroundTint="#9370DB"
+            android:visibility="visible"
             app:labelVisibilityMode="labeled"
             app:menu="@menu/menu_bottom_navigation_view" />
 
