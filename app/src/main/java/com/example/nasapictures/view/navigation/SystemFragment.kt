@@ -48,17 +48,18 @@ class SystemFragment : Fragment() {
 
         val text = binding.textSystem.text
         val spannableString = SpannableString(text)
-        for (i in text.indices){
-            if(text[i] != ' '){
+        for (i in text.indices) {
+            if (text[i] != ' ') {
                 spannableString.setSpan(
-                    ForegroundColorSpan(ContextCompat.getColor(requireContext(),R.color.teal_700)),
-                    i,i+1,Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+                    ForegroundColorSpan(ContextCompat.getColor(requireContext(), R.color.teal_700)),
+                    i, i + 1, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
+                )
                 spannableString.setSpan(
-                   AbsoluteSizeSpan(32,true ), i,i+1,Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+                    AbsoluteSizeSpan(32, true), i, i + 1, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
+                )
             } else break
         }
         binding.textSystem.text = spannableString
-
 
         binding.systemImage.setOnClickListener {
             isFlag2 = !isFlag2

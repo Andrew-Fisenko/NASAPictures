@@ -9,21 +9,21 @@
         android:id="@+id/header"
         android:layout_width="match_parent"
         android:layout_height="65dp"
-        android:background="#9370DB"
         android:alpha="1"
+        android:background="#9370DB"
         android:stateListAnimator="@animator/toolbar_elevation"
-        tools:ignore="MissingConstraints" >
+        tools:ignore="MissingConstraints">
 
         <TextView
             android:id="@+id/titleSystem"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
             android:layout_gravity="center"
-            android:textSize="32sp"
             android:alpha="1"
+            android:gravity="center"
+            android:text="@string/solar_system"
             android:textColor="@color/white"
-            android:text="@string/solar_system" />
+            android:textSize="32sp" />
     </FrameLayout>
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
@@ -69,8 +69,8 @@
             android:id="@+id/nestedScrollViewSystem"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:layout_behavior=".view.layouts.behaviors.NestedBehavior"
             android:paddingBottom="?actionBarSize"
+            app:layout_behavior=".view.layouts.behaviors.NestedBehavior"
             tools:context=".ScrollingActivity">
 
             <TextView

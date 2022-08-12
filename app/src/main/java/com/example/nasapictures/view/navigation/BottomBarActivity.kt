@@ -24,12 +24,6 @@ class BottomBarActivity : AppCompatActivity() {
         binding = ActivityBottomBarBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-//        supportFragmentManager.beginTransaction().replace(R.id.container, SplashFragment()).commit()
-//        Handler(Looper.getMainLooper()).postDelayed({
-//            supportFragmentManager.beginTransaction().detach(SplashFragment())
-//        }, 2000L)
-
-
         binding.bottomNavigationView.setOnItemSelectedListener {
             when (it.itemId) {
                 R.id.action_view_earth -> {
@@ -52,16 +46,16 @@ class BottomBarActivity : AppCompatActivity() {
         }
         binding.bottomNavigationView.visibility = View.INVISIBLE
         binding.bottomNavigationView.selectedItemId = R.id.action_loading
+
         Handler(Looper.getMainLooper()).postDelayed({
             binding.bottomNavigationView.visibility = View.VISIBLE
             binding.bottomNavigationView.selectedItemId = R.id.action_view_earth
-        }, 2000L)
+        }, 3000L)
 
         val badge = binding.bottomNavigationView.getOrCreateBadge(R.id.action_view_notes)
         badge.number = 10
         badge.maxCharacterCount = 5
         badge.badgeGravity = BadgeDrawable.BOTTOM_START
-        //binding.bottomNavigationView.removeBadge(R.id.action_view_system)
     }
 
     private fun navigateTo(fragment: Fragment) {

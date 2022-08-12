@@ -71,25 +71,21 @@
             android:layout_width="150dp"
             android:layout_height="150dp"
             android:layout_gravity="center_horizontal"
-            app:layout_constraintTop_toBottomOf="@+id/inputLayout"
-            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/inputLayout" />
 
         <TextView
-                android:id="@+id/videoOfTheDay"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:textSize="22sp"
-                android:visibility="invisible"
+            android:id="@+id/videoOfTheDay"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
             android:gravity="center"
-            app:layout_constraintStart_toStartOf="parent"
+            android:textSize="22sp"
+            android:visibility="invisible"
             app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/imageViewSmall"
-                />
-
-
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageViewSmall" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

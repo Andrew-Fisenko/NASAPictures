@@ -21,6 +21,6 @@
     <item
         android:id="@+id/action_loading"
         android:icon="@drawable/ic_archive"
-        android:visible="false"
-        android:title="@string/notes" />
+        android:title="@string/notes"
+        android:visible="false" />
 </menu>
