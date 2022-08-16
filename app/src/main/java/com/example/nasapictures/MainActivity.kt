@@ -1,8 +1,11 @@
 package com.example.nasapictures
 
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import androidx.appcompat.app.AppCompatActivity
 import com.example.nasapictures.databinding.ActivityMainBinding
+import com.example.nasapictures.view.SplashFragment
 import com.example.nasapictures.view.picture.PictureOfTheDayFragment
 
 const val ThemeViolet = 1
@@ -23,6 +26,15 @@ class MainActivity : AppCompatActivity() {
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        supportFragmentManager.beginTransaction().replace(R.id.container, SplashFragment()).commit()
+        Handler(Looper.getMainLooper()).postDelayed({
+            if (savedInstanceState == null) {
+                val i = 0
+                supportFragmentManager.beginTransaction()
+                    .replace(R.id.container, PictureOfTheDayFragment.newInstance(i)).commit()
+            }
+        }, 2000L)
 
         if (savedInstanceState == null) {
             val i = 0

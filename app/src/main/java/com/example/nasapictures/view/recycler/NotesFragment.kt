@@ -18,14 +18,14 @@ class NotesFragment : Fragment() {
     lateinit var adapter: RecyclerAdapter
     private var isNewList = false
     val data = arrayListOf(
-        Pair(Data(id=0,"Заголовок", type = TYPE_HEADER), false),
-        Pair(Data(id=1,"Earth", type = TYPE_EARTH), false),
-        Pair(Data(id=2,"Earth", type = TYPE_EARTH), false),
-        Pair(Data(id=3,"Mars", type = TYPE_MARS), false),
-        Pair(Data(id=4,"Earth", type = TYPE_EARTH), false),
-        Pair(Data(id=5,"Earth", type = TYPE_EARTH), false),
-        Pair(Data(id=6,"Earth", type = TYPE_EARTH), false),
-        Pair(Data(id=7,"Mars", type = TYPE_MARS), false),
+        Pair(Data(id = 0, "Заголовок", type = TYPE_HEADER), false),
+        Pair(Data(id = 1, "Earth", type = TYPE_EARTH), false),
+        Pair(Data(id = 2, "Earth", type = TYPE_EARTH), false),
+        Pair(Data(id = 3, "Mars", type = TYPE_MARS), false),
+        Pair(Data(id = 4, "Earth", type = TYPE_EARTH), false),
+        Pair(Data(id = 5, "Earth", type = TYPE_EARTH), false),
+        Pair(Data(id = 6, "Earth", type = TYPE_EARTH), false),
+        Pair(Data(id = 7, "Mars", type = TYPE_MARS), false),
     )
 
     override fun onCreateView(
@@ -48,12 +48,12 @@ class NotesFragment : Fragment() {
     }
 
     private val callbackAddEarth = AddItem() {
-        data.add(it, Pair(Data(id=0,"Earth(New)", type = TYPE_EARTH), false))
+        data.add(it, Pair(Data(id = 0, "Earth(New)", type = TYPE_EARTH), false))
         adapter.setListDataAdd(data, it)
     }
 
     private val callbackAddMars = AddItem() {
-        data.add(it, Pair(Data(id=0,"Mars(New)", type = TYPE_MARS), false))
+        data.add(it, Pair(Data(id = 0, "Mars(New)", type = TYPE_MARS), false))
         adapter.setListDataAdd(data, it)
     }
 
@@ -80,7 +80,7 @@ class NotesFragment : Fragment() {
                 Pair(Data(6, "Mars", ""), false)
             )
             true -> listOf(
-                Pair(Data(0, "Header",type = TYPE_HEADER), false),
+                Pair(Data(0, "Header", type = TYPE_HEADER), false),
                 Pair(Data(1, "Mars", ""), false),
                 Pair(Data(2, "Jupiter", ""), false),
                 Pair(Data(3, "Mars", ""), false),

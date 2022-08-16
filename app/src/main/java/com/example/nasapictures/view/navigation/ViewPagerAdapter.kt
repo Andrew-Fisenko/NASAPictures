@@ -8,7 +8,9 @@ import com.example.nasapictures.view.recycler.NotesFragment
 class ViewPagerAdapter(fragmentManager: FragmentManager) :
     FragmentStatePagerAdapter(fragmentManager) {
 
-    private val fragments = arrayOf(EarthFragment(), MarsFragment(), SystemFragment(), NotesFragment())
+    private val fragments =
+        arrayOf(EarthFragment(), MarsFragment(), SystemFragment(), NotesFragment())
+
     override fun getCount(): Int {
         return fragments.size
     }

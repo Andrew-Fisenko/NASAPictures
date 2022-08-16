@@ -1,13 +1,10 @@
 package com.example.nasapictures.view.navigation
 
 import android.animation.ObjectAnimator
-import android.content.Context
-import android.graphics.Typeface
 import android.os.Bundle
 import android.os.CountDownTimer
 import android.text.Spannable
 import android.text.SpannableString
-import android.text.style.AbsoluteSizeSpan
 import android.text.style.ForegroundColorSpan
 import android.view.LayoutInflater
 import android.view.View
@@ -73,22 +70,8 @@ class MarsFragment : Fragment() {
             constraintSet.applyTo(binding.titleContainer)
         }
 
-
-
         spannableRainbow = SpannableString(getString(R.string.large_text))
         rainbow(1)
-//        val text = binding.textMars.text
-//        val spannableString = SpannableString(text)
-//        for (i in text.indices){
-//            if(text[i] != ' '){
-//                spannableString.setSpan(
-//                    ForegroundColorSpan(ContextCompat.getColor(requireContext(),R.color.teal_700)),
-//                    i,i+1, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
-//                spannableString.setSpan(
-//                    AbsoluteSizeSpan(32,true ), i,i+1, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
-//            } else break
-//        }
-//        binding.textMars.text = spannableString
 
         binding.fab.setOnClickListener {
             isFlag = !isFlag
@@ -99,21 +82,6 @@ class MarsFragment : Fragment() {
                     .setDuration(duration2).start()
                 ObjectAnimator.ofFloat(binding.optionContainer, View.ALPHA, 1f)
                     .setDuration(duration).start()
-//                binding.longText.animate().alpha(0f).setDuration(duration2).setListener(
-//                    object : AnimatorListenerAdapter() {
-//                        override fun onAnimationEnd(animation: Animator) {
-//                            binding.longText.isClickable = true
-//                        }
-//                    }
-//                )
-//              binding.optionContainer.animate().alpha(1f).setDuration(duration).setListener(
-//                    object : AnimatorListenerAdapter() {
-//                        override fun onAnimationEnd(animation: Animator) {
-//                            binding.optionContainer.isClickable = false
-//                        }
-//                    }
-//                )
-//
             } else {
                 ObjectAnimator.ofFloat(binding.fab, View.ROTATION, 720f, 0f)
                     .setDuration(duration).start()
@@ -121,59 +89,41 @@ class MarsFragment : Fragment() {
                     .setDuration(duration2).start()
                 ObjectAnimator.ofFloat(binding.optionContainer, View.ALPHA, 0f)
                     .setDuration(duration).start()
-//                binding.optionContainer.animate().alpha(0f).setDuration(duration).setListener(
-//                    object : AnimatorListenerAdapter() {
-//                        override fun onAnimationEnd(animation: Animator) {
-//                            binding.optionContainer.isClickable = false
-//                        }
-//                    }
-//                )
-//                binding.longText.animate().alpha(1f).setDuration(duration2).setListener(
-//                    object : AnimatorListenerAdapter() {
-//                        override fun onAnimationEnd(animation: Animator) {
-//                            binding.longText.isClickable = true
-//                        }
-//
-//                    }
-//                )
             }
         }
     }
 
-    fun rainbow(i:Int=1) {
+    fun rainbow(i: Int = 1) {
         var currentCount = i
         val x = object : CountDownTimer(20000, 200) {
             override fun onTick(millisUntilFinished: Long) {
                 colorText(currentCount)
-                currentCount = if (++currentCount>5) 1 else currentCount
+                currentCount = if (++currentCount > 5) 1 else currentCount
             }
+
             override fun onFinish() {
                 rainbow(currentCount)
             }
         }
         x.start()
-
-
     }
 
-
-    private fun colorText(colorFirstNumber:Int){
+    private fun colorText(colorFirstNumber: Int) {
         binding.textMars.setText(spannableRainbow, TextView.BufferType.SPANNABLE)
         spannableRainbow = binding.textMars.text as SpannableString
         val map = mapOf(
             0 to activity?.let { ContextCompat.getColor(it.applicationContext, R.color.red) },
-            1 to activity?.let { ContextCompat.getColor(it.applicationContext, R.color.orange)},
-            2 to activity?.let { ContextCompat.getColor(it.applicationContext, R.color.yellow)},
-            3 to activity?.let { ContextCompat.getColor(it.applicationContext, R.color.green)},
-            4 to activity?.let { ContextCompat.getColor(it.applicationContext, R.color.light_blue)},
-            5 to activity?.let { ContextCompat.getColor(it.applicationContext, R.color.blue)},
-            6 to activity?.let { ContextCompat.getColor(it.applicationContext, R.color.violet)}
-//            1 to ContextCompat.getColor(requireContext(), R.color.orange),
-//            2 to ContextCompat.getColor(requireContext(), R.color.yellow),
-//            3 to ContextCompat.getColor(requireContext(), R.color.green),
-//            4 to ContextCompat.getColor(requireContext(), R.color.light_blue),
-//            5 to ContextCompat.getColor(requireContext(), R.color.blue),
-//            6 to ContextCompat.getColor(requireContext(),R.color.violet)
+            1 to activity?.let { ContextCompat.getColor(it.applicationContext, R.color.orange) },
+            2 to activity?.let { ContextCompat.getColor(it.applicationContext, R.color.yellow) },
+            3 to activity?.let { ContextCompat.getColor(it.applicationContext, R.color.green) },
+            4 to activity?.let {
+                ContextCompat.getColor(
+                    it.applicationContext,
+                    R.color.light_blue
+                )
+            },
+            5 to activity?.let { ContextCompat.getColor(it.applicationContext, R.color.blue) },
+            6 to activity?.let { ContextCompat.getColor(it.applicationContext, R.color.violet) }
         )
         val spans = spannableRainbow.getSpans(
             0, spannableRainbow.length,
@@ -184,7 +134,7 @@ class MarsFragment : Fragment() {
         }
 
         var colorNumber = colorFirstNumber
-        for (i in 1 until (binding.textMars.text.length - 6) step 5 ) {
+        for (i in 1 until (binding.textMars.text.length - 6) step 5) {
             if (colorNumber == 5) colorNumber = 0 else colorNumber += 1
             spannableRainbow.setSpan(
                 map.getValue(colorNumber)?.let { ForegroundColorSpan(it) },

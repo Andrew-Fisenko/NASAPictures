@@ -18,4 +18,9 @@
         android:id="@+id/action_view_notes"
         android:icon="@drawable/ic_archive"
         android:title="@string/notes" />
+    <item
+        android:id="@+id/action_loading"
+        android:icon="@drawable/ic_archive"
+        android:title="@string/notes"
+        android:visible="false" />
 </menu>
